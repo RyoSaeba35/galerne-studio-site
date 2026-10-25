@@ -41,17 +41,21 @@ const ads = {
   en: {
     h: 'Advertising',
     p: [
-      'The app shows ads served by Google AdMob. When you first open the app, a consent form lets you choose whether ads can be personalised.',
-      'With your consent, Google may use your device’s advertising ID, IP address, approximate location and interactions with ads to show personalised ads and measure their performance. Without consent, Google shows non-personalised ads and uses limited data for frequency capping, fraud prevention and aggregated reporting.',
-      'You can change your choice at any time from the privacy options in the app, and reset or delete your advertising ID in your Android settings. Google’s processing is described at policies.google.com/technologies/partner-sites.',
+      'The app shows ads from two sources: Unity LevelPlay, an ad mediation service operated by Unity Technologies that selects ads from several advertising networks, and Galerne Studio’s own ad server, which promotes our apps and partner offers.',
+      'When you first open the app, a consent form lets you choose whether ads can be personalised. With your consent, LevelPlay and its partner networks may use your device’s advertising ID, IP address, approximate location, device information and interactions with ads to personalise ads and measure their performance. Without consent, ads are not personalised, and limited data is still used for frequency capping, fraud prevention and aggregated reporting.',
+      'Our own ad server receives the app name and ad placement with each request, and sees your IP address as part of the network connection. It counts impressions and clicks per ad and does not build a profile of you. Ad images are downloaded from our storage provider.',
+      'The app reads your advertising ID on the device only to recognise our own test devices. It is never sent to us.',
+      'You can change your consent choice at any time from the privacy options in the app, and reset or delete your advertising ID in your Android settings. Unity’s privacy policy: unity.com/legal/game-player-and-app-user-privacy-policy.',
     ],
   },
   fr: {
     h: 'Publicité',
     p: [
-      'L’application affiche des publicités diffusées par Google AdMob. À la première ouverture, un formulaire de consentement vous permet de choisir si les publicités peuvent être personnalisées.',
-      'Avec votre consentement, Google peut utiliser l’identifiant publicitaire de votre appareil, votre adresse IP, votre localisation approximative et vos interactions avec les publicités pour afficher des publicités personnalisées et en mesurer les performances. Sans consentement, Google affiche des publicités non personnalisées et utilise des données limitées pour plafonner leur fréquence, lutter contre la fraude et produire des statistiques agrégées.',
-      'Vous pouvez modifier votre choix à tout moment depuis les options de confidentialité de l’application, et réinitialiser ou supprimer votre identifiant publicitaire dans les réglages Android. Le traitement effectué par Google est décrit sur policies.google.com/technologies/partner-sites.',
+      'L’application affiche des publicités provenant de deux sources : Unity LevelPlay, un service de médiation publicitaire exploité par Unity Technologies qui sélectionne des annonces auprès de plusieurs régies, et le serveur publicitaire de Galerne Studio, qui fait la promotion de nos applications et d’offres partenaires.',
+      'À la première ouverture, un formulaire de consentement vous permet de choisir si les publicités peuvent être personnalisées. Avec votre consentement, LevelPlay et ses régies partenaires peuvent utiliser l’identifiant publicitaire de votre appareil, votre adresse IP, votre localisation approximative, des informations sur l’appareil et vos interactions avec les publicités pour les personnaliser et en mesurer les performances. Sans consentement, les publicités ne sont pas personnalisées, et des données limitées restent utilisées pour plafonner leur fréquence, lutter contre la fraude et produire des statistiques agrégées.',
+      'Notre propre serveur publicitaire reçoit, à chaque requête, le nom de l’application et l’emplacement publicitaire, et voit votre adresse IP du fait de la connexion réseau. Il compte les affichages et les clics par publicité et ne constitue aucun profil vous concernant. Les images publicitaires sont téléchargées depuis notre prestataire de stockage.',
+      'L’application lit votre identifiant publicitaire sur l’appareil uniquement pour reconnaître nos propres appareils de test. Il ne nous est jamais transmis.',
+      'Vous pouvez modifier votre choix à tout moment depuis les options de confidentialité de l’application, et réinitialiser ou supprimer votre identifiant publicitaire dans les réglages Android. Politique de confidentialité de Unity : unity.com/legal/game-player-and-app-user-privacy-policy.',
     ],
   },
 };
