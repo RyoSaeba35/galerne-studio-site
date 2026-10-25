@@ -1,5 +1,5 @@
 :root {
-  --ink: #0E1A24;
+  --ink: #0E1C2F;
   --ink-2: #3E4C55;
   --ink-3: #4F5D66;
   --ground: #F3F5F4;
@@ -7,7 +7,7 @@
   --line: #DCE2E0;
   --line-2: #C9D2D0;
   --accent: #1F6F78;
-  --mint: #7FD1C7;
+  --mint: #4DD9C8;
   --display: 'Space Grotesk', system-ui, sans-serif;
   --body: 'Inter Variable', Inter, system-ui, sans-serif;
   --radius: 20px;
@@ -103,7 +103,7 @@ p { margin: 0; }
 .contact-box h2 { font-size: clamp(28px, 3.5vw, 38px); }
 .contact-box p { font-size: 17px; color: #B8C6CC; }
 .btn-mint { background: var(--mint); color: var(--ink); border-color: var(--mint); font-weight: 700; font-size: 17px; padding: 14px 28px; border-radius: 14px; word-break: break-all; }
-.btn-mint:hover { background: #9ADDD4; color: var(--ink); }
+.btn-mint:hover { background: #7AE4D6; color: var(--ink); }
 
 /* Footer */
 .footer { border-top: 1px solid var(--line); }

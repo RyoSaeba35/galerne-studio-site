@@ -2,7 +2,4 @@
 interface Props { size?: number }
 const { size = 36 } = Astro.props;
 ---
-<svg width={size} height={size} viewBox="0 0 36 36" aria-hidden="true">
-  <rect width="36" height="36" rx="9" fill="#0E1A24" />
-  <path d="M8 13h14a4 4 0 1 0-4-4M8 19h20a4 4 0 1 1-4 4M8 25h9" fill="none" stroke="#7FD1C7" stroke-width="2.4" stroke-linecap="round" />
-</svg>
+<img src="/logo-72.png" width={size} height={size} alt="" aria-hidden="true" />

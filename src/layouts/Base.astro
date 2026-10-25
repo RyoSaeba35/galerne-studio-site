@@ -13,14 +13,20 @@ interface Props {
   path: string;
   title?: string;
   description?: string;
+  /** Absolute path of a 1200x630 image in /public */
+  ogImage?: string;
+  /** Structured data objects, rendered as JSON-LD */
+  jsonLd?: Record<string, unknown>[];
 }
-const { lang, path, title, description } = Astro.props;
+const { lang, path, title, description, ogImage = '/og/default.png', jsonLd = [] } = Astro.props;
 const s = t[lang];
 const other: Lang = lang === 'en' ? 'fr' : 'en';
 const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${s.hero.title}`;
 const desc = description ?? s.metaDesc;
 const canonical = new URL(localePath(lang, path), Astro.site).href;
 const home = localePath(lang, '/');
+const homeBase = home === '/' ? '' : home; // "" or "/fr", for anchors like /fr#apps
+const ogUrl = new URL(ogImage, Astro.site).href;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -33,16 +39,26 @@ const home = localePath(lang, '/');
   <link rel="alternate" hreflang="en" href={new URL(localePath('en', path), Astro.site).href} />
   <link rel="alternate" hreflang="fr" href={new URL(localePath('fr', path), Astro.site).href} />
   <link rel="alternate" hreflang="x-default" href={new URL(localePath('en', path), Astro.site).href} />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="theme-color" content="#0E1A24" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0E1C2F" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={site.name} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={desc} />
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:locale:alternate" content={lang === 'fr' ? 'en_GB' : 'fr_FR'} />
+  <meta property="og:image" content={ogUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Galerne Studio" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@galernestudio" />
+  <meta name="twitter:image" content={ogUrl} />
+  {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
 </head>
 <body>
   <a class="skip" href="#main">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>
@@ -52,9 +68,9 @@ const home = localePath(lang, '/');
       <span>Galerne Studio</span>
     </a>
     <nav class="nav" aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
-      <a href={`${home === '/' ? '' : home}/#apps`}>{s.nav.apps}</a>
-      <a href={`${home === '/' ? '' : home}/#about`}>{s.nav.about}</a>
-      <a href={`${home === '/' ? '' : home}/#contact`}>{s.nav.contact}</a>
+      <a href={`${homeBase || '/'}#apps`}>{s.nav.apps}</a>
+      <a href={`${homeBase || '/'}#about`}>{s.nav.about}</a>
+      <a href={`${homeBase || '/'}#contact`}>{s.nav.contact}</a>
       <a class="lang" href={localePath(other, path)} hreflang={other} lang={other} aria-label={s.nav.switchLabel}>{s.nav.switchText}</a>
     </nav>
   </header>

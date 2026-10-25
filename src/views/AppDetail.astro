@@ -9,10 +9,34 @@ const { lang, slug } = Astro.props;
 const s = t[lang];
 const app = apps.find((a) => a.slug === slug)!;
 const page = appPages[slug];
+const url = new URL(localePath(lang, `/apps/${slug}`), Astro.site).href;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: app.name,
+    description: page.tagline[lang],
+    url,
+    applicationCategory: page.category,
+    operatingSystem: 'Android',
+    inLanguage: page.languages,
+    ...(app.playUrl && { downloadUrl: app.playUrl, installUrl: app.playUrl }),
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    publisher: { '@type': 'Organization', '@id': 'https://galernestudio.com/#organization', name: 'Galerne Studio', url: 'https://galernestudio.com' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Galerne Studio', item: new URL(localePath(lang, '/'), Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: app.name, item: url },
+    ],
+  },
+];
 ---
-<Base lang={lang} path={`/apps/${slug}`} title={app.name} description={page.tagline[lang]}>
+<Base lang={lang} path={`/apps/${slug}`} title={app.name} description={page.tagline[lang]} jsonLd={jsonLd} ogImage={page.ogImage}>
   <nav class="container crumbs" aria-label="Breadcrumb">
-    <a href={`${localePath(lang, '/') === '/' ? '' : localePath(lang, '/')}/#apps`}>{s.appPage.breadcrumb}</a> / <span aria-current="page">{app.name}</span>
+    <a href={`${localePath(lang, '/')}#apps`}>{s.appPage.breadcrumb}</a> / <span aria-current="page">{app.name}</span>
   </nav>
 
   <section class="container app-hero">

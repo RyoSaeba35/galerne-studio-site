@@ -25,8 +25,8 @@ export const apps: AppEntry[] = [
     slug: 'vulcainvpn',
     name: 'VulcainVPN',
     initial: 'V',
-    bg: '#0E1A24',
-    fg: '#7FD1C7',
+    bg: '#0E1C2F',
+    fg: '#4DD9C8',
     kinds: ['android', 'windows'],
     platform: { en: 'Android · Windows', fr: 'Android · Windows' },
     desc: {
@@ -122,6 +122,12 @@ export interface AppPageData {
   screenshots: string[];
   iconBg: string;
   iconFg: string;
+  /** schema.org applicationCategory */
+  category: string;
+  /** Languages the app is available in (BCP 47) */
+  languages: string[];
+  /** Optional 1200x630 social image in /public, defaults to the studio image */
+  ogImage?: string;
 }
 
 export const appPages: Record<string, AppPageData> = {
@@ -132,7 +138,9 @@ export const appPages: Record<string, AppPageData> = {
     },
     meta: { en: 'Free · Android', fr: 'Gratuit · Android' },
     iconBg: '#0F2027',
-    iconFg: '#7FD1C7',
+    iconFg: '#4DD9C8',
+    category: 'LifestyleApplication',
+    languages: ['en', 'fr'],
     screenshots: [],
     supportHint: {
       en: 'Found a bug or a card that won’t scan? Write to us.',
@@ -173,6 +181,8 @@ export const appPages: Record<string, AppPageData> = {
     meta: { en: 'Free with ads · Android · EN / FR / JA', fr: 'Gratuit avec publicités · Android · EN / FR / JA' },
     iconBg: '#2B3A55',
     iconFg: '#FFFFFF',
+    category: 'GameApplication',
+    languages: ['en', 'fr', 'ja'],
     screenshots: [],
     supportHint: {
       en: 'Spotted a typo in a quote or a bug? Write to us.',

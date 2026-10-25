@@ -9,8 +9,38 @@ const { lang } = Astro.props;
 const s = t[lang];
 const tiles = ['vulcainvpn', 'sideby', 'fidele', 'topotree'].map((slug) => apps.find((a) => a.slug === slug)!);
 const tileHref = (a: (typeof apps)[number]) => (a.hasPage ? localePath(lang, `/apps/${a.slug}`) : a.website?.[lang] ?? a.playUrl!);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://galernestudio.com/#organization',
+    name: 'Galerne Studio',
+    url: 'https://galernestudio.com',
+    logo: 'https://galernestudio.com/logo.png',
+    email: site.email,
+    founder: { '@type': 'Person', name: 'Pierre Libran' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
+    sameAs: [site.x],
+    owns: apps.map((a) => ({
+      '@type': 'SoftwareApplication',
+      name: a.name,
+      url: a.hasPage ? new URL(localePath(lang, `/apps/${a.slug}`), Astro.site).href : a.website?.[lang] ?? a.playUrl,
+      operatingSystem: a.kinds.map((k) => (k === 'android' ? 'Android' : 'Windows')).join(', '),
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://galernestudio.com/#website',
+    name: 'Galerne Studio',
+    url: 'https://galernestudio.com',
+    inLanguage: lang,
+    publisher: { '@id': 'https://galernestudio.com/#organization' },
+  },
+];
 ---
-<Base lang={lang} path="/">
+<Base lang={lang} path="/" jsonLd={jsonLd}>
   <section class="container hero">
     <div class="hero-text">
       <p class="eyebrow">{s.hero.eyebrow}</p>
