@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { apps, type Lang } from '../data/apps';
+import { policies } from '../data/privacy';
+import { t, localePath } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t[lang];
+
+const items = apps.map((a) => {
+  if (policies[a.slug]) return { name: a.name, href: localePath(lang, `/privacy/${a.slug}`), host: 'galernestudio.com' };
+  const site = a.website?.[lang];
+  if (!site) return null;
+  const url = new URL(site);
+  return { name: a.name, href: site, host: url.hostname.replace(/^www\./, '') };
+}).filter(Boolean) as { name: string; href: string; host: string }[];
+---
+<Base lang={lang} path="/privacy" title={s.privacy.title}>
+  <article class="container prose">
+    <h1>{s.privacy.title}</h1>
+    <p>{s.privacy.intro}</p>
+    <ul class="policy-list">
+      {items.map((i) => (
+        <li><a href={i.href}><span>{i.name}</span><span class="host">{i.host}</span></a></li>
+      ))}
+    </ul>
+  </article>
+</Base>

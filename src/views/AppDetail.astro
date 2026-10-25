@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { apps, appPages, type Lang } from '../data/apps';
+import { t, site, localePath } from '../i18n';
+
+interface Props { lang: Lang; slug: string }
+const { lang, slug } = Astro.props;
+const s = t[lang];
+const app = apps.find((a) => a.slug === slug)!;
+const page = appPages[slug];
+---
+<Base lang={lang} path={`/apps/${slug}`} title={app.name} description={page.tagline[lang]}>
+  <nav class="container crumbs" aria-label="Breadcrumb">
+    <a href={`${localePath(lang, '/') === '/' ? '' : localePath(lang, '/')}/#apps`}>{s.appPage.breadcrumb}</a> / <span aria-current="page">{app.name}</span>
+  </nav>
+
+  <section class="container app-hero">
+    <div class="app-hero-text">
+      <div class="app-icon app-icon-lg" style={`background:${page.iconBg};color:${page.iconFg}`} aria-hidden="true">{app.initial}</div>
+      <h1>{app.name}</h1>
+      <p class="lead" style="font-size:21px;line-height:1.5">{page.tagline[lang]}</p>
+      <div class="actions" style="align-items:center">
+        {app.playUrl && <a class="btn btn-dark" href={app.playUrl}>{s.appPage.getPlay}</a>}
+        <span class="app-meta">{page.meta[lang]}</span>
+      </div>
+    </div>
+    <div class="shots">
+      {page.screenshots.length > 0
+        ? page.screenshots.slice(0, 2).map((src, i) => (
+            <div class="shot"><img src={src} alt={`${app.name} screenshot ${i + 1}`} width="164" height="356" loading="lazy" /></div>
+          ))
+        : <div class="shot-placeholder" style={`background:${page.iconBg};color:${page.iconFg}`} aria-hidden="true">{app.initial}</div>}
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container section">
+      <h2 class="h2">{s.appPage.what}</h2>
+      <div class="features">
+        {page.features.map((f) => (
+          <div class="feature">
+            <Icon name={f.icon} />
+            <h3>{f.title[lang]}</h3>
+            <p>{f.body[lang]}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container info">
+    <div class="info-card">
+      <h2>{s.appPage.privacyTitle}</h2>
+      <p>{s.appPage.privacyBody(app.name)}</p>
+      <a class="link" href={localePath(lang, `/privacy/${slug}`)}>{s.appPage.privacyLink}</a>
+    </div>
+    <div class="info-card">
+      <h2>{s.appPage.supportTitle}</h2>
+      <p>{page.supportHint[lang]}</p>
+      <a class="link" href={`mailto:${site.email}?subject=${encodeURIComponent(app.name)}`}>{site.email}</a>
+    </div>
+  </section>
+</Base>

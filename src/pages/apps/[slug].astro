@@ -1,0 +1,9 @@
+---
+import AppDetail from '../../views/AppDetail.astro';
+import { appPages } from '../../data/apps';
+export function getStaticPaths() {
+  return Object.keys(appPages).map((slug) => ({ params: { slug } }));
+}
+const { slug } = Astro.params;
+---
+<AppDetail lang="en" slug={slug!} />

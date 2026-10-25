@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { t } from '../i18n';
+const s = t.en.notFound;
+const f = t.fr.notFound;
+---
+<Base lang="en" path="/404" title={s.title}>
+  <article class="container prose">
+    <h1>{s.title}</h1>
+    <p>{s.body} <a href="/">{s.back}</a></p>
+    <p lang="fr">{f.body} <a href="/fr">{f.back}</a></p>
+  </article>
+</Base>

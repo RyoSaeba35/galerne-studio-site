@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { apps, counts, type Lang } from '../data/apps';
+import { t, site, localePath } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t[lang];
+const tiles = ['vulcainvpn', 'sideby', 'fidele', 'topotree'].map((slug) => apps.find((a) => a.slug === slug)!);
+const tileHref = (a: (typeof apps)[number]) => (a.hasPage ? localePath(lang, `/apps/${a.slug}`) : a.website?.[lang] ?? a.playUrl!);
+---
+<Base lang={lang} path="/">
+  <section class="container hero">
+    <div class="hero-text">
+      <p class="eyebrow">{s.hero.eyebrow}</p>
+      <h1>{s.hero.title}</h1>
+      <p class="lead">{s.hero.sub}</p>
+      <div class="actions">
+        <a class="btn btn-dark" href="#apps">{s.hero.cta1}</a>
+        <a class="btn btn-ghost" href="#contact">{s.hero.cta2}</a>
+      </div>
+      <div class="stats">
+        <span><strong>{counts.total}</strong>{s.hero.stats[0]}</span>
+        <span><strong>{counts.android}</strong>{s.hero.stats[1]}</span>
+        <span><strong>{counts.windows}</strong>{s.hero.stats[2]}</span>
+      </div>
+    </div>
+    <div class="tiles">
+      {tiles.map((a) => (
+        <a class="tile" href={tileHref(a)} style={`background:${a.bg};color:${a.fg}`}>{a.name}</a>
+      ))}
+    </div>
+  </section>
+
+  <section id="apps" class="band">
+    <div class="container section">
+      <div class="section-head">
+        <div>
+          <h2 class="h2">{s.apps.title}</h2>
+          <p class="muted">{s.apps.sub}</p>
+        </div>
+        <div class="filters" role="group" aria-label={s.apps.filterLabel}>
+          <button type="button" class="filter" data-filter="all" aria-pressed="true">{s.apps.filters.all}</button>
+          <button type="button" class="filter" data-filter="android" aria-pressed="false">{s.apps.filters.android}</button>
+          <button type="button" class="filter" data-filter="windows" aria-pressed="false">{s.apps.filters.windows}</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        {apps.map((a) => (
+          <article class="card" data-kinds={a.kinds.join(' ')}>
+            <div class="card-head">
+              <div class="app-icon" style={`background:${a.bg};color:${a.fg}`} aria-hidden="true">{a.initial}</div>
+              <div>
+                <h3>{a.name}</h3>
+                <span class="platform">{a.platform[lang]}</span>
+              </div>
+            </div>
+            <p>{a.desc[lang]}</p>
+            <div class="card-links">
+              {a.playUrl && <a class="btn btn-dark btn-sm" href={a.playUrl}>{s.apps.play}</a>}
+              {a.msStoreUrl && <a class="btn btn-dark btn-sm" href={a.msStoreUrl}>{s.apps.msStore}</a>}
+              {a.website && !a.playUrl && !a.msStoreUrl && (
+                <a class="btn btn-dark btn-sm" href={a.website[lang]}>{s.apps.website}</a>
+              )}
+              {a.website && (a.playUrl || a.msStoreUrl) && (
+                <a class="link" href={a.website[lang]} aria-label={s.apps.opensIn(a.name)}>{s.apps.website}</a>
+              )}
+              {a.hasPage && (
+                <a class="link" href={localePath(lang, `/apps/${a.slug}`)} aria-label={`${s.apps.details}: ${a.name}`}>{s.apps.details}</a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="also">
+        <div class="also-main">
+          <div class="app-icon" style="background:#F2C14E;color:#0E1A24"><Icon name="hint" size={26} /></div>
+          <div>
+            <span class="eyebrow">{s.also.eyebrow}</span>
+            <p class="muted" style="font-size:16px"><strong style="color:var(--ink)">The Little Firefly</strong>: {s.also.desc}</p>
+          </div>
+        </div>
+        <a class="link" href={site.firefly} style="font-size:14px">{s.also.visit}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container about">
+    <div class="about-text">
+      <h2 class="h2">{s.about.title}</h2>
+      <p class="muted">{s.about.body}</p>
+    </div>
+    <div class="values">
+      {s.about.values.map((v) => (
+        <div class="value">
+          <Icon name={v.icon} />
+          <h3>{v.title}</h3>
+          <p>{v.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="contact" class="container contact">
+    <div class="contact-box">
+      <div>
+        <h2>{s.contact.title}</h2>
+        <p>{s.contact.sub}</p>
+      </div>
+      <a class="btn btn-mint" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-kinds]');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter!;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      cards.forEach((c) => {
+        c.hidden = f !== 'all' && !c.dataset.kinds!.split(' ').includes(f);
+      });
+    }),
+  );
+</script>

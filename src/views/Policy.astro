@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { apps, type Lang } from '../data/apps';
+import { policies } from '../data/privacy';
+import { t } from '../i18n';
+
+interface Props { lang: Lang; slug: string }
+const { lang, slug } = Astro.props;
+const s = t[lang];
+const app = apps.find((a) => a.slug === slug)!;
+const policy = policies[slug];
+const date = new Date(policy.updated).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const title = s.privacy.policyFor(app.name);
+---
+<Base lang={lang} path={`/privacy/${slug}`} title={title}>
+  <article class="container prose">
+    <h1>{title}</h1>
+    <p class="updated">{s.privacy.updated}: <time datetime={policy.updated}>{date}</time></p>
+    {policy.sections[lang].map((sec) => (
+      <section>
+        <h2>{sec.h}</h2>
+        {sec.p?.map((para) => <p>{para}</p>)}
+        {sec.ul && <ul>{sec.ul.map((li) => <li>{li}</li>)}</ul>}
+      </section>
+    ))}
+  </article>
+</Base>

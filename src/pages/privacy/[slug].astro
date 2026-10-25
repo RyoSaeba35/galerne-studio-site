@@ -1,0 +1,9 @@
+---
+import Policy from '../../views/Policy.astro';
+import { policies } from '../../data/privacy';
+export function getStaticPaths() {
+  return Object.keys(policies).map((slug) => ({ params: { slug } }));
+}
+const { slug } = Astro.params;
+---
+<Policy lang="en" slug={slug!} />

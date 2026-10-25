@@ -1,0 +1,77 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/700.css';
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { t, site, localePath } from '../i18n';
+import type { Lang } from '../data/apps';
+
+interface Props {
+  lang: Lang;
+  /** English path of this page, e.g. "/" or "/apps/fidele" */
+  path: string;
+  title?: string;
+  description?: string;
+}
+const { lang, path, title, description } = Astro.props;
+const s = t[lang];
+const other: Lang = lang === 'en' ? 'fr' : 'en';
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${s.hero.title}`;
+const desc = description ?? s.metaDesc;
+const canonical = new URL(localePath(lang, path), Astro.site).href;
+const home = localePath(lang, '/');
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={desc} />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="en" href={new URL(localePath('en', path), Astro.site).href} />
+  <link rel="alternate" hreflang="fr" href={new URL(localePath('fr', path), Astro.site).href} />
+  <link rel="alternate" hreflang="x-default" href={new URL(localePath('en', path), Astro.site).href} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0E1A24" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@galernestudio" />
+</head>
+<body>
+  <a class="skip" href="#main">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>
+  <header class="container header">
+    <a class="brand" href={home}>
+      <Logo />
+      <span>Galerne Studio</span>
+    </a>
+    <nav class="nav" aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
+      <a href={`${home === '/' ? '' : home}/#apps`}>{s.nav.apps}</a>
+      <a href={`${home === '/' ? '' : home}/#about`}>{s.nav.about}</a>
+      <a href={`${home === '/' ? '' : home}/#contact`}>{s.nav.contact}</a>
+      <a class="lang" href={localePath(other, path)} hreflang={other} lang={other} aria-label={s.nav.switchLabel}>{s.nav.switchText}</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© {new Date().getFullYear()} Galerne Studio · {s.footer.rights}</span>
+      <div class="footer-links">
+        <a href={localePath(lang, '/legal')}>{s.footer.legal}</a>
+        <a href={localePath(lang, '/privacy')}>{s.footer.privacy}</a>
+        <a href={site.x} rel="me">X @galernestudio</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
