@@ -16,7 +16,7 @@ const fr = lang === 'fr';
     <dl>
       <dt>{fr ? 'Nom' : 'Name'}</dt><dd>Pierre Libran, {fr ? 'entrepreneur individuel (micro-entreprise)' : 'sole trader (micro-entreprise)'}</dd>
       <dt>{fr ? 'Nom commercial' : 'Trading name'}</dt><dd>Galerne Studio</dd>
-      <dt>SIRET</dt><dd>106 996 812</dd>
+      <dt>SIRET</dt><dd>[SIRET]</dd>
       <dt>{fr ? 'Adresse' : 'Address'}</dt><dd>[ADRESSE / ADDRESS], France</dd>
       <dt>{fr ? 'E-mail' : 'Email'}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
       <dt>{fr ? 'Directeur de la publication' : 'Publication director'}</dt><dd>Pierre Libran</dd>
@@ -28,8 +28,11 @@ const fr = lang === 'fr';
 
     <h2>{fr ? 'Cookies et mesure d’audience' : 'Cookies and analytics'}</h2>
     <p>{fr
-      ? 'Ce site n’utilise aucun cookie, aucun outil de mesure d’audience et aucun traceur. Les polices sont hébergées sur le site lui-même. Aucune donnée personnelle n’est collectée lors de la navigation.'
-      : 'This site uses no cookies, no analytics and no trackers. Fonts are served from the site itself. No personal data is collected when you browse it.'}</p>
+      ? 'Ce site n’utilise aucun cookie et aucun traceur publicitaire. Les polices sont hébergées sur le site lui-même.'
+      : 'This site uses no cookies and no advertising trackers. Fonts are served from the site itself.'}</p>
+    <p>{fr
+      ? 'La fréquentation est mesurée avec Umami, un outil de mesure d’audience auto-hébergé par Galerne Studio (serveur Railway). Umami ne dépose aucun cookie, ne stocke pas votre adresse IP et ne permet pas de vous identifier : il produit uniquement des statistiques agrégées (pages vues, pays, type d’appareil, site de provenance). Conformément aux recommandations de la CNIL sur les outils de mesure d’audience exemptés de consentement, aucun bandeau n’est donc nécessaire.'
+      : 'Visits are measured with Umami, an analytics tool self-hosted by Galerne Studio (Railway server). Umami sets no cookies, does not store your IP address and cannot identify you: it only produces aggregate statistics (page views, country, device type, referring site). In line with CNIL guidance on consent-exempt audience measurement, no consent banner is needed.'}</p>
 
     <h2>{fr ? 'Applications' : 'Apps'}</h2>
     <p>{fr

@@ -59,6 +59,9 @@ const ogUrl = new URL(ogImage, Astro.site).href;
   <meta name="twitter:site" content="@galernestudio" />
   <meta name="twitter:image" content={ogUrl} />
   {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  {!site.umami.websiteId.startsWith('PASTE') && (
+    <script is:inline defer src={site.umami.src} data-website-id={site.umami.websiteId} data-domains="galernestudio.com" />
+  )}
 </head>
 <body>
   <a class="skip" href="#main">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>

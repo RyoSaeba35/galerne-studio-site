@@ -5,6 +5,11 @@ export const site = {
   email: 'contact@galernestudio.com',
   x: 'https://x.com/galernestudio',
   firefly: 'https://www.thelittlefirefly.co.uk',
+  /** Umami (self-hosted, cookieless). Paste the website ID from Umami > Edit > Tracking code. */
+  umami: {
+    src: 'https://umami-production-2843.up.railway.app/script.js',
+    websiteId: 'f9d115c4-134f-4395-90e0-47655ec1229c',
+  },
 };
 
 /** Path for a page in a given language. `path` is the English path, e.g. "/apps/fidele". */
