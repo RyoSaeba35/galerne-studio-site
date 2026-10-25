@@ -54,7 +54,8 @@ p { margin: 0; }
 .stats { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 16px; font-size: 15px; color: var(--ink-2); }
 .stats strong { font-family: var(--display); font-size: 22px; color: var(--ink); margin-right: 4px; }
 .tiles { flex: 1 1 360px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.tile { aspect-ratio: 1; border-radius: 28px; display: flex; align-items: flex-end; padding: 20px; font-family: var(--display); font-weight: 700; font-size: clamp(16px, 2.2vw, 22px); text-decoration: none; transition: transform .2s ease; }
+.tile img { width: clamp(44px, 5vw, 56px); height: auto; border-radius: 14px; }
+.tile { aspect-ratio: 1; border-radius: 28px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 20px; font-family: var(--display); font-weight: 700; font-size: clamp(16px, 2.2vw, 22px); text-decoration: none; transition: transform .2s ease; }
 .tile:hover { transform: translateY(-3px); }
 @media (prefers-reduced-motion: reduce) { .tile { transition: none; } .tile:hover { transform: none; } }
 
@@ -62,7 +63,7 @@ p { margin: 0; }
 .band { background: var(--surface); border-block: 1px solid var(--line); }
 .section { padding-block: 88px; display: flex; flex-direction: column; gap: 40px; }
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }
-.section-head > div { display: flex; flex-direction: column; gap: 12px; }
+.section-head > div:first-child { display: flex; flex-direction: column; gap: 12px; }
 .h2 { font-size: clamp(32px, 4vw, 44px); }
 .muted { color: var(--ink-2); font-size: 17px; line-height: 1.6; }
 
@@ -81,7 +82,7 @@ p { margin: 0; }
 .platform { font-size: 13px; font-weight: 600; color: var(--accent); }
 .card p { font-size: 15px; line-height: 1.6; color: var(--ink-2); flex-grow: 1; }
 .card-links { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; font-size: 14px; }
-.app-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 24px; flex-shrink: 0; }
+.app-icon { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; flex-shrink: 0; }
 
 .also { border-top: 1px solid var(--line); padding-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
 .also-main { display: flex; align-items: center; gap: 16px; flex: 1 1 420px; min-width: 0; }
@@ -117,12 +118,12 @@ p { margin: 0; }
 .app-hero { padding-block: 48px 80px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
 .app-hero-text { flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
 .app-hero h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1.04; letter-spacing: -0.03em; }
-.app-icon-lg { width: 88px; height: 88px; border-radius: 24px; font-size: 40px; }
+.app-icon-lg { width: 88px; height: 88px; border-radius: 22px; }
 .app-meta { font-size: 14px; color: var(--ink-3); }
 .shots { flex: 1 1 420px; min-width: 0; display: flex; gap: 16px; justify-content: center; }
 .shot { width: 180px; border-radius: 28px; border: 8px solid var(--ink); overflow: hidden; background: var(--surface); }
 .shot:nth-child(2) { margin-top: 40px; }
-.shot-placeholder { width: min(320px, 100%); aspect-ratio: 1; border-radius: 48px; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 120px; }
+.shot-placeholder { width: min(320px, 100%); height: auto; aspect-ratio: 1; border-radius: 64px; object-fit: cover; box-shadow: 0 24px 60px -20px rgba(14, 28, 47, 0.35); }
 .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px; }
 .feature { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 10px; color: var(--accent); }
 .feature h3 { font-size: 19px; color: var(--ink); }

@@ -18,6 +18,7 @@ const jsonLd = [
     description: page.tagline[lang],
     url,
     applicationCategory: page.category,
+    image: `https://galernestudio.com/icons/${slug}-640.webp`,
     operatingSystem: 'Android',
     inLanguage: page.languages,
     ...(app.playUrl && { downloadUrl: app.playUrl, installUrl: app.playUrl }),
@@ -41,7 +42,7 @@ const jsonLd = [
 
   <section class="container app-hero">
     <div class="app-hero-text">
-      <div class="app-icon app-icon-lg" style={`background:${page.iconBg};color:${page.iconFg}`} aria-hidden="true">{app.initial}</div>
+      <img class="app-icon app-icon-lg" src={`/icons/${slug}.webp`} alt="" width="88" height="88" />
       <h1>{app.name}</h1>
       <p class="lead" style="font-size:21px;line-height:1.5">{page.tagline[lang]}</p>
       <div class="actions" style="align-items:center">
@@ -54,7 +55,7 @@ const jsonLd = [
         ? page.screenshots.slice(0, 2).map((src, i) => (
             <div class="shot"><img src={src} alt={`${app.name} screenshot ${i + 1}`} width="164" height="356" loading="lazy" /></div>
           ))
-        : <div class="shot-placeholder" style={`background:${page.iconBg};color:${page.iconFg}`} aria-hidden="true">{app.initial}</div>}
+        : <img class="shot-placeholder" src={`/icons/${slug}-640.webp`} alt={`${app.name} icon`} width="320" height="320" />}
     </div>
   </section>
 

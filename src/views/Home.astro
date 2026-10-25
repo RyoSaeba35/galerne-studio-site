@@ -27,6 +27,7 @@ const jsonLd = [
       name: a.name,
       url: a.hasPage ? new URL(localePath(lang, `/apps/${a.slug}`), Astro.site).href : a.website?.[lang] ?? a.playUrl,
       operatingSystem: a.kinds.map((k) => (k === 'android' ? 'Android' : 'Windows')).join(', '),
+      image: `https://galernestudio.com/icons/${a.slug}.webp`,
     })),
   },
   {
@@ -58,7 +59,10 @@ const jsonLd = [
     </div>
     <div class="tiles">
       {tiles.map((a) => (
-        <a class="tile" href={tileHref(a)} style={`background:${a.bg};color:${a.fg}`}>{a.name}</a>
+        <a class="tile" href={tileHref(a)} style={`background:${a.bg};color:${a.fg}`}>
+          <img src={`/icons/${a.slug}.webp`} alt="" width="56" height="56" />
+          <span>{a.name}</span>
+        </a>
       ))}
     </div>
   </section>
@@ -81,7 +85,7 @@ const jsonLd = [
         {apps.map((a) => (
           <article class="card" data-kinds={a.kinds.join(' ')}>
             <div class="card-head">
-              <div class="app-icon" style={`background:${a.bg};color:${a.fg}`} aria-hidden="true">{a.initial}</div>
+              <img class="app-icon" src={`/icons/${a.slug}.webp`} alt="" width="56" height="56" loading="lazy" />
               <div>
                 <h3>{a.name}</h3>
                 <span class="platform">{a.platform[lang]}</span>
@@ -107,7 +111,7 @@ const jsonLd = [
 
       <div class="also">
         <div class="also-main">
-          <div class="app-icon" style="background:#F2C14E;color:#0E1A24"><Icon name="hint" size={26} /></div>
+          <img class="app-icon" src="/icons/firefly.webp" alt="" width="56" height="56" loading="lazy" />
           <div>
             <span class="eyebrow">{s.also.eyebrow}</span>
             <p class="muted" style="font-size:16px"><strong style="color:var(--ink)">The Little Firefly</strong>: {s.also.desc}</p>
