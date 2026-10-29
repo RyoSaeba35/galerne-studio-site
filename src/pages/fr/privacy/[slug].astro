@@ -1,6 +1,6 @@
 ---
-import Policy from '../../views/Policy.astro';
-import { policies } from '../../data/privacy';
+import Policy from '../../../views/Policy.astro';
+import { policies } from '../../../data/privacy';
 export function getStaticPaths() {
   return Object.keys(policies).map((slug) => ({ params: { slug } }));
 }
