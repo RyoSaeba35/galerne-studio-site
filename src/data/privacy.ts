@@ -9,7 +9,7 @@ const controller = {
   en: {
     h: 'Who is responsible',
     p: [
-      'The data controller is Pierre Libran, sole trader (entrepreneur individuel) trading as Galerne Studio, [ADDRESS], France. Contact: contact@galernestudio.com.',
+      'The data controller is Pierre Libran, sole trader (entrepreneur individuel) trading as Galerne Studio, 23 rue Dumenge, 69004 Lyon, France. Contact: contact@galernestudio.com.',
     ],
   },
   fr: {
