@@ -118,8 +118,8 @@ export const apps: AppEntry[] = [
     kinds: ['android'],
     platform: { en: 'Android · Game', fr: 'Android · Jeu' },
     desc: {
-      en: 'Brain training with real tricks for mental math and memory, from 7 to 777.',
-      fr: 'Entraînement cérébral avec de vraies astuces de calcul mental et de mémoire, de 7 à 777 ans.',
+      en: 'Brain training with real tricks for mental math and memory.',
+      fr: 'Entraînement cérébral avec de vraies astuces de calcul mental et de mémoire.',
     },
     playUrl: play('com.galernestudio.kioku'),
     hasPage: true,
@@ -264,10 +264,10 @@ export const appPages: Record<string, AppPageData> = {
       },
       {
         icon: 'globe',
-        title: { en: 'For everyone, in 13 languages', fr: 'Pour tous, en 13 langues' },
+        title: { en: 'In 13 languages', fr: 'En 13 langues' },
         body: {
-          en: 'From 7 to 777. Worlds of 10 lessons, progress and stats saved on your phone.',
-          fr: 'De 7 à 777 ans. Des mondes de 10 leçons, progression et statistiques enregistrées sur votre téléphone.',
+          en: 'Worlds of 10 lessons, with progress and stats saved on your phone.',
+          fr: 'Des mondes de 10 leçons, avec progression et statistiques enregistrées sur votre téléphone.',
         },
       },
     ],
