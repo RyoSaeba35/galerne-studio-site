@@ -42,6 +42,7 @@ Cloudflare dashboard > galernestudio.com > Email > Email Routing > enable, then 
   (AdMob reads app-ads.txt from that domain). Allow a few days for AdMob to re-crawl.
 - Fidèle privacy policy URL in Play Console: `https://galernestudio.com/privacy/fidele`
   (replaces the GitHub Pages one). Kotoba Ciphers: `https://galernestudio.com/privacy/kotoba-ciphers`.
+  Kioku: `https://galernestudio.com/privacy/kioku`.
 
 ## Adding an app
 

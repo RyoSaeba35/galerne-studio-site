@@ -109,14 +109,29 @@ export const apps: AppEntry[] = [
     playUrl: play('io.github.ryosaeba35.kotobaciphers'),
     hasPage: true,
   },
+  {
+    slug: 'kioku',
+    name: 'Kioku',
+    initial: 'K',
+    bg: '#1B2A4A',
+    fg: '#F5E6B8',
+    kinds: ['android'],
+    platform: { en: 'Android · Game', fr: 'Android · Jeu' },
+    desc: {
+      en: 'Brain training with real tricks for mental math and memory, from 7 to 777.',
+      fr: 'Entraînement cérébral avec de vraies astuces de calcul mental et de mémoire, de 7 à 777 ans.',
+    },
+    playUrl: play('com.galernestudio.kioku'),
+    hasPage: true,
+  },
 ];
 
-export const counts = { total: 7, android: 4, windows: 3 };
+export const counts = { total: 8, android: 5, windows: 3 };
 
 export interface AppPageData {
   tagline: Record<Lang, string>;
   meta: Record<Lang, string>;
-  features: { icon: 'scan' | 'cards' | 'lock' | 'book' | 'hint' | 'trophy'; title: Record<Lang, string>; body: Record<Lang, string> }[];
+  features: { icon: 'scan' | 'cards' | 'lock' | 'book' | 'hint' | 'trophy' | 'calc' | 'globe'; title: Record<Lang, string>; body: Record<Lang, string> }[];
   supportHint: Record<Lang, string>;
   /** Optional screenshots placed in /public/screenshots/<slug>/ */
   screenshots: string[];
@@ -211,6 +226,48 @@ export const appPages: Record<string, AppPageData> = {
         body: {
           en: 'Points, completion rate, best times and achievements. Play in English, French or Japanese.',
           fr: 'Points, taux de réussite, meilleurs temps et succès. Jouez en anglais, français ou japonais.',
+        },
+      },
+    ],
+  },
+  kioku: {
+    tagline: {
+      en: 'Train your brain with tricks you can actually use. Mental math and memory techniques, taught through science and history.',
+      fr: 'Entraînez votre cerveau avec des astuces vraiment utiles. Calcul mental et techniques de mémoire, à travers la science et l’histoire.',
+    },
+    meta: { en: 'Free with ads · Android · 13 languages', fr: 'Gratuit avec publicités · Android · 13 langues' },
+    iconBg: '#1B2A4A',
+    iconFg: '#F5E6B8',
+    category: 'GameApplication',
+    languages: ['en', 'fr', 'de', 'es', 'it', 'pt-PT', 'pt-BR', 'nl', 'pl', 'el', 'ja', 'zh-Hans', 'zh-Hant'],
+    screenshots: [],
+    supportHint: {
+      en: 'Found a bug or a mistake in a lesson? Write to us.',
+      fr: 'Un bug ou une erreur dans une leçon ? Écrivez-nous.',
+    },
+    features: [
+      {
+        icon: 'calc',
+        title: { en: 'Mental math', fr: 'Calcul mental' },
+        body: {
+          en: 'Real calculation tricks for everyday life, one new technique per lesson.',
+          fr: 'De vraies astuces de calcul pour la vie de tous les jours, une nouvelle technique par leçon.',
+        },
+      },
+      {
+        icon: 'book',
+        title: { en: 'Memory techniques', fr: 'Techniques de mémoire' },
+        body: {
+          en: 'Learn to memorise with inventions, dates and stories from Europe and Asia.',
+          fr: 'Apprenez à mémoriser avec des inventions, des dates et des histoires d’Europe et d’Asie.',
+        },
+      },
+      {
+        icon: 'globe',
+        title: { en: 'For everyone, in 13 languages', fr: 'Pour tous, en 13 langues' },
+        body: {
+          en: 'From 7 to 777. Worlds of 10 lessons, progress and stats saved on your phone.',
+          fr: 'De 7 à 777 ans. Des mondes de 10 leçons, progression et statistiques enregistrées sur votre téléphone.',
         },
       },
     ],

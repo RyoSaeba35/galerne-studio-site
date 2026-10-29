@@ -158,4 +158,71 @@ export const policies: Record<string, Policy> = {
       ],
     },
   },
+  kioku: {
+    updated: '2026-10-29',
+    sections: {
+      en: [
+        controller.en,
+        {
+          h: 'Your progress stays on your phone',
+          p: ['Kioku has no account and no server for game data. Your progress, scores, statistics and settings (such as your language) are stored only on your device. We never receive them. Kioku never asks for your name, email address, age or any other personal information.'],
+        },
+        {
+          h: 'Permissions',
+          p: ['Kioku only needs internet access, to load ads. It does not use the camera, microphone, contacts, photos or location.'],
+        },
+        {
+          h: 'Advertising',
+          p: [
+            'Kioku is free and shows ads from two sources: Unity LevelPlay, an ad mediation service operated by Unity Technologies that selects ads from several advertising networks, and Galerne Studio’s own ad server, which promotes our apps and partner offers.',
+            'Kioku is made for players of all ages, including children. For this reason, all ads in Kioku are non-personalised and limited to content suitable for a general audience. Ad requests are marked as directed at children, and we only use ad networks that take part in Google Play’s Families program. LevelPlay and its partner networks may still process limited technical data, such as your IP address, device type and operating system version, to deliver ads, limit how often the same ad is shown, prevent fraud and produce aggregated reports. This data is not used to build an advertising profile.',
+            'Where the law requires it, a consent form is shown when you first open the app. You can change your choice at any time in Settings, under Ad privacy choices.',
+            'Our own ad server receives the app name and ad placement with each request, and sees your IP address as part of the network connection. It counts impressions and clicks per ad and does not build a profile of you. Ad images are downloaded from our storage provider.',
+            'Kioku does not collect your advertising ID. Unity’s privacy policy: unity.com/legal/game-player-and-app-user-privacy-policy.',
+          ],
+        },
+        {
+          h: 'Tips',
+          p: ['You can choose to leave a tip to support the app. Payments are handled entirely by Google Play under Google’s privacy policy. We only receive confirmation that the purchase went through; we never see your payment details.'],
+        },
+        {
+          h: 'Children',
+          p: ['Kioku is designed for players of all ages, including children. We do not knowingly collect personal information from children: there is no account, no chat, no sharing between players, and game data stays on the device. If you are a parent and have a question, write to contact@galernestudio.com.'],
+        },
+        rights.en,
+        changes.en,
+      ],
+      fr: [
+        controller.fr,
+        {
+          h: 'Votre progression reste sur votre téléphone',
+          p: ['Kioku n’a ni compte ni serveur pour les données de jeu. Votre progression, vos scores, vos statistiques et vos réglages (comme la langue) sont enregistrés uniquement sur votre appareil. Nous ne les recevons jamais. Kioku ne demande jamais votre nom, votre adresse e-mail, votre âge ni aucune autre information personnelle.'],
+        },
+        {
+          h: 'Autorisations',
+          p: ['Kioku a seulement besoin d’un accès à Internet, pour charger les publicités. L’application n’utilise ni l’appareil photo, ni le micro, ni les contacts, ni les photos, ni la localisation.'],
+        },
+        {
+          h: 'Publicité',
+          p: [
+            'Kioku est gratuit et affiche des publicités provenant de deux sources : Unity LevelPlay, un service de médiation publicitaire exploité par Unity Technologies qui sélectionne des annonces auprès de plusieurs régies, et le serveur publicitaire de Galerne Studio, qui fait la promotion de nos applications et d’offres partenaires.',
+            'Kioku s’adresse aux joueurs de tous âges, y compris aux enfants. C’est pourquoi toutes les publicités de Kioku sont non personnalisées et limitées à des contenus adaptés à tous les publics. Les demandes de publicité sont signalées comme destinées aux enfants, et nous n’utilisons que des régies participant au programme Familles de Google Play. LevelPlay et ses régies partenaires peuvent tout de même traiter des données techniques limitées, comme votre adresse IP, le type d’appareil et la version du système, afin de diffuser les annonces, limiter la répétition d’une même annonce, lutter contre la fraude et produire des statistiques agrégées. Ces données ne servent pas à constituer un profil publicitaire.',
+            'Lorsque la loi l’exige, un formulaire de consentement s’affiche à la première ouverture de l’application. Vous pouvez modifier votre choix à tout moment dans les Réglages, rubrique Choix de confidentialité publicitaire.',
+            'Notre propre serveur publicitaire reçoit, à chaque requête, le nom de l’application et l’emplacement publicitaire, et voit votre adresse IP du fait de la connexion réseau. Il compte les affichages et les clics par publicité et ne constitue aucun profil vous concernant. Les images publicitaires sont téléchargées depuis notre prestataire de stockage.',
+            'Kioku ne collecte pas votre identifiant publicitaire. Politique de confidentialité de Unity : unity.com/legal/game-player-and-app-user-privacy-policy.',
+          ],
+        },
+        {
+          h: 'Pourboires',
+          p: ['Vous pouvez choisir de laisser un pourboire pour soutenir l’application. Les paiements sont entièrement gérés par Google Play, selon la politique de confidentialité de Google. Nous recevons uniquement la confirmation de l’achat ; nous ne voyons jamais vos informations de paiement.'],
+        },
+        {
+          h: 'Enfants',
+          p: ['Kioku est conçu pour les joueurs de tous âges, y compris les enfants. Nous ne collectons sciemment aucune information personnelle auprès des enfants : pas de compte, pas de messagerie, pas d’échange entre joueurs, et les données de jeu restent sur l’appareil. Si vous êtes parent et avez une question, écrivez à contact@galernestudio.com.'],
+        },
+        rights.fr,
+        changes.fr,
+      ],
+    },
+  },
 };
