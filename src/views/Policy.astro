@@ -17,7 +17,7 @@ const title = s.privacy.policyFor(app.name);
     <h1>{title}</h1>
     <p class="updated">{s.privacy.updated}: <time datetime={policy.updated}>{date}</time></p>
     {policy.sections[lang].map((sec) => (
-      <section>
+      <section id={sec.id}>
         <h2>{sec.h}</h2>
         {sec.p?.map((para) => <p>{para}</p>)}
         {sec.ul && <ul>{sec.ul.map((li) => <li>{li}</li>)}</ul>}

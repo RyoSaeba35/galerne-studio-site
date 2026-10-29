@@ -1,6 +1,6 @@
 import type { Lang } from './apps';
 
-export interface Section { h: string; p?: string[]; ul?: string[] }
+export interface Section { h: string; id?: string; p?: string[]; ul?: string[] }
 export interface Policy { updated: string; sections: Record<Lang, Section[]> }
 
 // Shared blocks -------------------------------------------------------------
@@ -185,6 +185,17 @@ export const policies: Record<string, Policy> = {
           p: ['You can choose to leave a tip to support the app. Payments are handled entirely by Google Play under Google’s privacy policy. We only receive confirmation that the purchase went through; we never see your payment details.'],
         },
         {
+          h: 'Delete your data',
+          id: 'delete-data',
+          p: ['Kioku has no account, so there is nothing to close. To delete your Kioku data:'],
+          ul: [
+            'Game data (progress, scores, statistics, settings): uninstall Kioku, or go to Android Settings > Apps > Kioku > Storage > Clear data. It is deleted immediately and we keep no copy.',
+            'Advertising data: open Android Settings > Google > Ads (or Privacy > Ads) and delete your advertising ID. To ask Unity to delete data linked to your device, use the request form in Unity’s privacy policy.',
+            'Data seen by our own ad server: write to contact@galernestudio.com with the subject “Kioku data deletion”. We only keep aggregated counts of impressions and clicks that cannot identify you; server logs containing IP addresses are deleted within 30 days.',
+            'Tips: purchase records are kept by Google Play under Google’s rules. Manage them from your Google account.',
+          ],
+        },
+        {
           h: 'Children',
           p: ['Kioku is not directed at children under 13.'],
         },
@@ -213,6 +224,17 @@ export const policies: Record<string, Policy> = {
         {
           h: 'Pourboires',
           p: ['Vous pouvez choisir de laisser un pourboire pour soutenir l’application. Les paiements sont entièrement gérés par Google Play, selon la politique de confidentialité de Google. Nous recevons uniquement la confirmation de l’achat ; nous ne voyons jamais vos informations de paiement.'],
+        },
+        {
+          h: 'Supprimer vos données',
+          id: 'delete-data',
+          p: ['Kioku n’a pas de compte, il n’y a donc rien à clôturer. Pour supprimer vos données Kioku :'],
+          ul: [
+            'Données de jeu (progression, scores, statistiques, réglages) : désinstallez Kioku, ou allez dans Paramètres Android > Applications > Kioku > Stockage > Effacer les données. Elles sont supprimées immédiatement et nous n’en gardons aucune copie.',
+            'Données publicitaires : ouvrez Paramètres Android > Google > Annonces (ou Confidentialité > Annonces) et supprimez votre identifiant publicitaire. Pour demander à Unity de supprimer les données liées à votre appareil, utilisez le formulaire indiqué dans la politique de confidentialité de Unity.',
+            'Données vues par notre serveur publicitaire : écrivez à contact@galernestudio.com avec l’objet « Suppression données Kioku ». Nous ne conservons que des totaux agrégés d’affichages et de clics qui ne permettent pas de vous identifier ; les journaux serveur contenant des adresses IP sont supprimés sous 30 jours.',
+            'Pourboires : les reçus d’achat sont conservés par Google Play selon les règles de Google. Gérez-les depuis votre compte Google.',
+          ],
         },
         {
           h: 'Enfants',
