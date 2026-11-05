@@ -7,7 +7,7 @@ export const site = {
   firefly: 'https://www.thelittlefirefly.co.uk',
   /** Umami (self-hosted, cookieless). Paste the website ID from Umami > Edit > Tracking code. */
   umami: {
-    src: 'https://umami-production-2843.up.railway.app/script.js',
+    src: 'https://stats.galernestudio.com/script.js',
     websiteId: 'f9d115c4-134f-4395-90e0-47655ec1229c',
   },
 };
