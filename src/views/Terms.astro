@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import type { Lang } from '../data/apps';
+import { termsApps, termsFor } from '../data/terms';
+import { t } from '../i18n';
+
+interface Props { lang: Lang; slug: string }
+const { lang, slug } = Astro.props;
+const s = t[lang];
+const app = termsApps[slug];
+const sections = termsFor(slug, lang);
+const date = new Date(app.updated).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const title = s.terms.termsFor(app.name);
+---
+<Base lang={lang} path={`/terms/${slug}`} title={title}>
+  <article class="container prose">
+    <h1>{title}</h1>
+    <p class="updated">{s.privacy.updated}: <time datetime={app.updated}>{date}</time></p>
+    {sections.map((sec) => (
+      <section>
+        <h2>{sec.h}</h2>
+        {sec.p?.map((para) => <p>{para}</p>)}
+        {sec.ul && <ul>{sec.ul.map((li) => <li>{li}</li>)}</ul>}
+      </section>
+    ))}
+  </article>
+</Base>

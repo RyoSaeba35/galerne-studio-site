@@ -15,8 +15,7 @@ npm run build    # output in dist/
 | File | What |
 |---|---|
 | `public/app-ads.txt` | Replace `pub-XXXXXXXXXXXXXXXX` with your AdMob publisher ID |
-| `src/views/Legal.astro` | `[SIRET]` and `[ADRESSE / ADDRESS]` |
-| `src/data/privacy.ts` | `[ADDRESS]` / `[ADRESSE]` in the controller block |
+| `src/data/terms.ts` | `mediator` (consumer mediator name + URL) once you have signed up with one |
 | `src/data/privacy.ts` | Check the ads section matches each app (AdMob + consent form, "privacy options" entry in the app) |
 | `src/data/apps.ts` | Optional: `msStoreUrl` for Topotree / Duplicate Finder, screenshots for app pages |
 
@@ -43,8 +42,10 @@ Cloudflare dashboard > galernestudio.com > Email > Email Routing > enable, then 
 - Fidèle privacy policy URL in Play Console: `https://galernestudio.com/privacy/fidele`
   (replaces the GitHub Pages one). Kotoba Ciphers: `https://galernestudio.com/privacy/kotoba-ciphers`.
   Kioku: `https://galernestudio.com/privacy/kioku`.
+- Terms of service URL (Play Console trader declaration, per app): `https://galernestudio.com/terms/fidele`,
+  `https://galernestudio.com/terms/kotoba-ciphers`, `https://galernestudio.com/terms/kioku`.
 
 ## Adding an app
 
 Add an entry in `src/data/apps.ts`. To give it a page on this site, set `hasPage: true`, add an
-`appPages` entry, and a policy in `src/data/privacy.ts`. Pages are generated automatically.
+`appPages` entry, a policy in `src/data/privacy.ts` and an entry in `termsApps` in `src/data/terms.ts`. Pages are generated automatically.

@@ -15,7 +15,7 @@ const controller = {
   fr: {
     h: 'Responsable du traitement',
     p: [
-      'Le responsable du traitement est Pierre Libran, entrepreneur individuel exerçant sous le nom commercial Galerne Studio, [ADRESSE], France. Contact : contact@galernestudio.com.',
+      'Le responsable du traitement est Pierre Libran, entrepreneur individuel exerçant sous le nom commercial Galerne Studio, 23 rue Dumenge, 69004 Lyon, France. Contact : contact@galernestudio.com.',
     ],
   },
 };

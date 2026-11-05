@@ -16,8 +16,8 @@ const fr = lang === 'fr';
     <dl>
       <dt>{fr ? 'Nom' : 'Name'}</dt><dd>Pierre Libran, {fr ? 'entrepreneur individuel (micro-entreprise)' : 'sole trader (micro-entreprise)'}</dd>
       <dt>{fr ? 'Nom commercial' : 'Trading name'}</dt><dd>Galerne Studio</dd>
-      <dt>SIRET</dt><dd>[SIRET]</dd>
-      <dt>{fr ? 'Adresse' : 'Address'}</dt><dd>[ADRESSE / ADDRESS], France</dd>
+      <dt>SIRET</dt><dd>106 996 812 00017</dd>
+      <dt>{fr ? 'Adresse' : 'Address'}</dt><dd>23 rue Dumenge, 69004 Lyon, France</dd>
       <dt>{fr ? 'E-mail' : 'Email'}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
       <dt>{fr ? 'Directeur de la publication' : 'Publication director'}</dt><dd>Pierre Libran</dd>
       <dt>{fr ? 'TVA' : 'VAT'}</dt><dd>{fr ? 'TVA non applicable, art. 293 B du CGI' : 'Not subject to VAT (art. 293 B of the French General Tax Code)'}</dd>
@@ -36,8 +36,13 @@ const fr = lang === 'fr';
 
     <h2>{fr ? 'Applications' : 'Apps'}</h2>
     <p>{fr
-      ? 'Chaque application dispose de sa propre politique de confidentialité, accessible depuis la page Politiques de confidentialité.'
-      : 'Each app has its own privacy policy, listed on the Privacy policies page.'}</p>
+      ? 'Chaque application dispose de sa propre politique de confidentialité, accessible depuis la page Politiques de confidentialité, et de ses propres conditions d’utilisation, accessibles depuis sa page. Les applications ayant leur propre site y publient ces documents.'
+      : 'Each app has its own privacy policy, listed on the Privacy policies page, and its own terms of use, linked from its page. Apps with their own website publish these documents there.'}</p>
+
+    <h2>{fr ? 'Statut professionnel' : 'Trader status'}</h2>
+    <p>{fr
+      ? 'Galerne Studio agit en qualité de professionnel au sens du droit de la consommation et s’engage à ne proposer que des produits et services conformes au droit de l’Union européenne et au droit français.'
+      : 'Galerne Studio acts as a trader under consumer law and commits to only offer products and services that comply with European Union and French law.'}</p>
 
     <h2>{fr ? 'Propriété intellectuelle' : 'Intellectual property'}</h2>
     <p>{fr

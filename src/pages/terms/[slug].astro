@@ -1,0 +1,9 @@
+---
+import Terms from '../../views/Terms.astro';
+import { termsApps } from '../../data/terms';
+export function getStaticPaths() {
+  return Object.keys(termsApps).map((slug) => ({ params: { slug } }));
+}
+const { slug } = Astro.params;
+---
+<Terms lang="en" slug={slug!} />

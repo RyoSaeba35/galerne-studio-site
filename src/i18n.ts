@@ -67,6 +67,7 @@ export const t = {
       privacyTitle: 'Privacy',
       privacyBody: (name: string) => `How ${name} handles your data, ads and consent.`,
       privacyLink: 'Read the privacy policy',
+      termsLink: 'Terms of use',
       supportTitle: 'Support',
     },
     privacy: {
@@ -75,6 +76,7 @@ export const t = {
       updated: 'Last updated',
       policyFor: (name: string) => `${name} privacy policy`,
     },
+    terms: { termsFor: (name: string) => `${name} terms of use` },
     legal: { title: 'Legal notice' },
     notFound: { title: 'Page not found', body: 'This page does not exist or has moved.', back: 'Back to home' },
   },
@@ -126,6 +128,7 @@ export const t = {
       privacyTitle: 'Confidentialité',
       privacyBody: (name: string) => `Comment ${name} traite vos données, la publicité et votre consentement.`,
       privacyLink: 'Lire la politique de confidentialité',
+      termsLink: 'Conditions d’utilisation',
       supportTitle: 'Assistance',
     },
     privacy: {
@@ -134,6 +137,7 @@ export const t = {
       updated: 'Dernière mise à jour',
       policyFor: (name: string) => `Politique de confidentialité de ${name}`,
     },
+    terms: { termsFor: (name: string) => `Conditions d’utilisation de ${name}` },
     legal: { title: 'Mentions légales' },
     notFound: { title: 'Page introuvable', body: 'Cette page n’existe pas ou a été déplacée.', back: 'Retour à l’accueil' },
   },

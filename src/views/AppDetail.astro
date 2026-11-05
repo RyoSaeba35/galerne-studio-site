@@ -1,4 +1,5 @@
 ---
+import { termsApps } from '../data/terms';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { apps, appPages, type Lang } from '../data/apps';
@@ -79,6 +80,7 @@ const jsonLd = [
       <h2>{s.appPage.privacyTitle}</h2>
       <p>{s.appPage.privacyBody(app.name)}</p>
       <a class="link" href={localePath(lang, `/privacy/${slug}`)}>{s.appPage.privacyLink}</a>
+      {termsApps[slug] && <a class="link" href={localePath(lang, `/terms/${slug}`)}>{s.appPage.termsLink}</a>}
     </div>
     <div class="info-card">
       <h2>{s.appPage.supportTitle}</h2>
