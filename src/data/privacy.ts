@@ -238,6 +238,7 @@ export const policies: Record<string, Policy> = {
           p: ['We do not sell or share your data. These providers process it on our behalf, only to run Souffle:'],
           ul: [
             'Oracle (Oracle Cloud Infrastructure): hosting of the Souffle server and database, in Marseille, France.',
+            'Wasabi Technologies: storage of the nightly database backups, in Paris, France. Backups are encrypted on our server before they are sent, so Wasabi cannot read them.',
             'Groq, Inc. (United States): speech recognition of your recordings. We have enabled Groq’s zero data retention: Groq does not keep recordings or transcripts after processing.',
             'Google (Gemini API, paid service): clean-up of the transcribed text. Google does not use this data to improve its products; it keeps it for a limited period only to detect abuse and meet legal obligations.',
             'Google (Sign in with Google, Google Play): sign-in and subscription payments, under Google’s own privacy policy.',
@@ -266,6 +267,7 @@ export const policies: Record<string, Policy> = {
             'Weekly word and audio counters: 13 weeks.',
             'Subscription records: as long as the account exists, and at most 13 months after the subscription ended.',
             'Logs: 7 days at most.',
+            'Encrypted database backups (account, sessions, counters, subscriptions; never recordings or texts): 14 days.',
           ],
         },
         {
@@ -279,7 +281,7 @@ export const policies: Record<string, Policy> = {
           id: 'delete-account',
           p: ['You can delete your Souffle account and its data at any time:'],
           ul: [
-            'In the app: Settings > Delete account. Your account, sessions, counters and subscription records are deleted immediately from our database. Logs disappear within 7 days.',
+            'In the app: Settings > Delete account. Your account, sessions, counters and subscription records are deleted immediately from our database. Logs disappear within 7 days, and encrypted backups within 14 days.',
             'Without the app: write to contact@galernestudio.com from the email address of your Souffle account, with the subject “Delete my Souffle account”. We delete it within 30 days and confirm by email.',
             'Deleting your account does not cancel a Souffle Pro subscription: cancel it first in Google Play (Payments & subscriptions > Subscriptions).',
             'Settings stored on your phone (language, dictionary, capsule position) are deleted when you uninstall Souffle.',
@@ -375,6 +377,7 @@ export const policies: Record<string, Policy> = {
           p: ['Nous ne vendons ni ne partageons vos données. Ces prestataires les traitent pour notre compte, uniquement pour faire fonctionner Souffle :'],
           ul: [
             'Oracle (Oracle Cloud Infrastructure) : hébergement du serveur et de la base de données Souffle, à Marseille, en France.',
+            'Wasabi Technologies : stockage des sauvegardes nocturnes de la base de données, à Paris, en France. Les sauvegardes sont chiffrées sur notre serveur avant leur envoi : Wasabi ne peut pas les lire.',
             'Groq, Inc. (États-Unis) : reconnaissance vocale de vos enregistrements. Nous avons activé la « conservation zéro » de Groq : Groq ne garde ni les enregistrements ni les transcriptions après traitement.',
             'Google (API Gemini, service payant) : mise en forme du texte transcrit. Google n’utilise pas ces données pour améliorer ses produits ; il les conserve pendant une durée limitée, uniquement pour détecter les abus et respecter ses obligations légales.',
             'Google (Se connecter avec Google, Google Play) : connexion et paiement des abonnements, selon la politique de confidentialité de Google.',
@@ -403,6 +406,7 @@ export const policies: Record<string, Policy> = {
             'Compteurs hebdomadaires de mots et de durée audio : 13 semaines.',
             'Données d’abonnement : tant que le compte existe, et au plus 13 mois après la fin de l’abonnement.',
             'Journaux : 7 jours au maximum.',
+            'Sauvegardes chiffrées de la base de données (compte, sessions, compteurs, abonnements ; jamais d’enregistrement ni de texte) : 14 jours.',
           ],
         },
         {
@@ -416,7 +420,7 @@ export const policies: Record<string, Policy> = {
           id: 'delete-account',
           p: ['Vous pouvez supprimer votre compte Souffle et ses données à tout moment :'],
           ul: [
-            'Dans l’application : Paramètres > Supprimer le compte. Votre compte, vos sessions, vos compteurs et vos données d’abonnement sont immédiatement supprimés de notre base de données. Les journaux disparaissent sous 7 jours.',
+            'Dans l’application : Paramètres > Supprimer le compte. Votre compte, vos sessions, vos compteurs et vos données d’abonnement sont immédiatement supprimés de notre base de données. Les journaux disparaissent sous 7 jours, et les sauvegardes chiffrées sous 14 jours.',
             'Sans l’application : écrivez à contact@galernestudio.com depuis l’adresse e-mail de votre compte Souffle, avec l’objet « Supprimer mon compte Souffle ». Nous le supprimons sous 30 jours et vous le confirmons par e-mail.',
             'Supprimer votre compte ne résilie pas un abonnement Souffle Pro : résiliez-le d’abord dans Google Play (Paiements et abonnements > Abonnements).',
             'Les réglages enregistrés sur votre téléphone (langue, dictionnaire, position de la capsule) sont supprimés quand vous désinstallez Souffle.',
