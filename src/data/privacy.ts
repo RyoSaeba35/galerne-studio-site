@@ -158,6 +158,285 @@ export const policies: Record<string, Policy> = {
       ],
     },
   },
+  souffle: {
+    updated: '2026-11-10',
+    sections: {
+      en: [
+        controller.en,
+        {
+          h: 'In short',
+          ul: [
+            'Your voice is recorded only after you tap the capsule, and at most for 2 minutes.',
+            'Your recordings and texts are never stored: not on our server, not in our logs, and they are never used to train AI models.',
+            'We keep only what an account needs: your Google account ID, your email address, your plan and a weekly word counter.',
+            'No ads, no analytics, no tracking in the app.',
+            'You can delete your account and its data at any time from the app.',
+          ],
+        },
+        {
+          h: 'What Souffle does',
+          p: [
+            'Souffle is a voice dictation app. When you tap the Souffle capsule while typing in another app, it records your voice, sends the recording to the Souffle server, which turns it into clean text with two AI services (speech recognition, then light editing), and types the result into the text field you are using.',
+          ],
+        },
+        {
+          h: 'Your account',
+          p: [
+            'You sign in with your Google account. Google sends us your Google account ID and your email address. We store them, together with your plan (Free or Pro), the end date of your Pro period and a random billing identifier that links Google Play purchases to your account. We never receive your Google password.',
+            'Each phone where you are signed in has a session. We store a fingerprint (SHA-256 hash) of its session token, never the token itself, and the last time it was used.',
+          ],
+        },
+        {
+          h: 'Your dictations',
+          p: [
+            'When you dictate, the app sends to the Souffle server: the recording, the language you chose (if any), your dictionary words (if any), and the package name of the app you are typing in (for example com.google.android.gm). The package name is only used to adapt the layout: an email is laid out as an email, a chat message stays short.',
+            'The server sends the recording to Groq for speech recognition, then sends the resulting text, your dictionary words and the type of destination (email, chat or AI prompt) to the Gemini API from Google for clean-up. The clean text comes back to your phone and is typed into the field.',
+            'Neither the recording nor any text is stored. The recording exists only as a temporary file for the few seconds of the request, on your phone and on the server, and is then deleted. Texts only pass through the server’s memory. None of this is written to our logs or our database.',
+            'For each dictation we only count the number of words and the length of the recording, to apply the weekly limits.',
+          ],
+        },
+        {
+          h: 'The Accessibility service',
+          id: 'accessibility',
+          p: [
+            'Souffle uses Android’s Accessibility service. It is the only way an app can show a button over other apps’ keyboards and type text into their fields. Souffle asks for it with an explanation screen, and you turn it on yourself in Android’s settings.',
+            'With this service, Souffle:',
+          ],
+          ul: [
+            'detects when a text field is selected and the keyboard is open, to show the capsule at the right place;',
+            'reads which app and which keyboard are on screen, to place the capsule and adapt the layout of the text;',
+            'types your dictated text into the selected field; when an app does not accept typing, Souffle reads that field’s current content on your phone only, to insert the text at the cursor;',
+            'never works in password fields, never reads the rest of your screen, and never sends or stores what is on your screen or what you have typed.',
+          ],
+        },
+        {
+          h: 'Microphone and notifications',
+          p: [
+            'The microphone is used only while the capsule is recording, after you tap it. A notification shows that Souffle is listening. Notifications also tell you when you reach your weekly limit.',
+          ],
+        },
+        {
+          h: 'Souffle Pro and payments',
+          p: [
+            'Souffle Pro is sold as a subscription through Google Play, which handles the payment. We receive the purchase token, the product, the subscription state, the renewal date and whether it will renew, and check them with Google to unlock Pro. We never see your payment details. Google’s privacy policy applies to the payment: policies.google.com/privacy.',
+          ],
+        },
+        {
+          h: 'What we log',
+          id: 'logging',
+          p: [
+            'Like every web server, ours keeps technical logs to keep the service running and secure. They contain:',
+          ],
+          ul: [
+            'Application logs: the time, the address called (for example /v1/dictate), the response code, the processing time and a random request number. They never contain your IP address, your email address, recordings, texts, dictionary words or the app you are typing in.',
+            'The web proxy in front of the server also records the IP address, the time, the address called, the response code and the technical description sent by the phone (user agent: Android version and phone model), to block attacks.',
+            'All logs are deleted after 7 days at most.',
+          ],
+        },
+        {
+          h: 'Who processes your data',
+          p: ['We do not sell or share your data. These providers process it on our behalf, only to run Souffle:'],
+          ul: [
+            'Oracle (Oracle Cloud Infrastructure): hosting of the Souffle server and database, in Marseille, France.',
+            'Groq, Inc. (United States): speech recognition of your recordings. We have enabled Groq’s zero data retention: Groq does not keep recordings or transcripts after processing.',
+            'Google (Gemini API, paid service): clean-up of the transcribed text. Google does not use this data to improve its products; it keeps it for a limited period only to detect abuse and meet legal obligations.',
+            'Google (Sign in with Google, Google Play): sign-in and subscription payments, under Google’s own privacy policy.',
+          ],
+        },
+        {
+          h: 'Transfers outside the EU',
+          p: [
+            'Groq and Google may process data in the United States. These transfers rely on the European Commission’s standard contractual clauses and, where the provider is certified, on the EU-U.S. Data Privacy Framework. You can ask us for a copy of the safeguards.',
+          ],
+        },
+        {
+          h: 'Why we process your data (legal bases)',
+          ul: [
+            'To provide the service you asked for (account, dictation, Pro subscription): performance of our contract with you.',
+            'Weekly limits, fair use, security logs and abuse prevention: our legitimate interest in keeping Souffle working, secure and affordable.',
+            'Keeping purchase records when the law requires it: legal obligation.',
+          ],
+        },
+        {
+          h: 'How long we keep it',
+          ul: [
+            'Recordings and texts: not kept (deleted as soon as the dictation is done).',
+            'Account (Google ID, email, plan): until you delete it, or automatically after 24 months without any use, unless a Pro subscription is still active.',
+            'Sessions: until you sign out, or after 12 months without use.',
+            'Weekly word and audio counters: 13 weeks.',
+            'Subscription records: as long as the account exists, and at most 13 months after the subscription ended.',
+            'Logs: 7 days at most.',
+          ],
+        },
+        {
+          h: 'Security',
+          p: [
+            'All traffic between the app and the server is encrypted (HTTPS). Session tokens are stored only as hashes. The keys of our AI providers stay on the server and are never in the app. Access to the server is limited to the publisher.',
+          ],
+        },
+        {
+          h: 'Delete your account',
+          id: 'delete-account',
+          p: ['You can delete your Souffle account and its data at any time:'],
+          ul: [
+            'In the app: Settings > Delete account. Your account, sessions, counters and subscription records are deleted immediately from our database. Logs disappear within 7 days.',
+            'Without the app: write to contact@galernestudio.com from the email address of your Souffle account, with the subject “Delete my Souffle account”. We delete it within 30 days and confirm by email.',
+            'Deleting your account does not cancel a Souffle Pro subscription: cancel it first in Google Play (Payments & subscriptions > Subscriptions).',
+            'Settings stored on your phone (language, dictionary, capsule position) are deleted when you uninstall Souffle.',
+          ],
+        },
+        {
+          h: 'Children',
+          p: ['Souffle is not intended for children under 15.'],
+        },
+        {
+          h: 'Your rights',
+          p: [
+            'Under the GDPR you have the right to access, correct and delete your personal data, to receive it in a portable format, to object to or restrict its processing, and to give instructions on what happens to it after your death. Deleting your account from the app is immediate.',
+            'To exercise your rights, write to contact@galernestudio.com from your account’s email address. We reply within one month. You can also lodge a complaint with the French data protection authority, the CNIL (www.cnil.fr).',
+          ],
+        },
+        changes.en,
+      ],
+      fr: [
+        controller.fr,
+        {
+          h: 'En bref',
+          ul: [
+            'Votre voix n’est enregistrée qu’après avoir touché la capsule, 2 minutes au maximum.',
+            'Vos enregistrements et vos textes ne sont jamais conservés : ni sur notre serveur, ni dans nos journaux, et ils ne servent jamais à entraîner des modèles d’IA.',
+            'Nous gardons seulement ce qu’un compte exige : votre identifiant Google, votre adresse e-mail, votre offre et un compteur de mots par semaine.',
+            'Aucune publicité, aucune mesure d’audience, aucun pistage dans l’application.',
+            'Vous pouvez supprimer votre compte et ses données à tout moment depuis l’application.',
+          ],
+        },
+        {
+          h: 'Ce que fait Souffle',
+          p: [
+            'Souffle est une application de dictée vocale. Quand vous touchez la capsule Souffle pendant que vous écrivez dans une autre application, elle enregistre votre voix, envoie l’enregistrement au serveur Souffle, qui le transforme en texte propre grâce à deux services d’IA (reconnaissance vocale, puis mise en forme légère), et saisit le résultat dans le champ de texte que vous utilisez.',
+          ],
+        },
+        {
+          h: 'Votre compte',
+          p: [
+            'Vous vous connectez avec votre compte Google. Google nous transmet votre identifiant de compte Google et votre adresse e-mail. Nous les conservons, avec votre offre (Gratuite ou Pro), la date de fin de votre période Pro et un identifiant de facturation aléatoire qui relie vos achats Google Play à votre compte. Nous ne recevons jamais votre mot de passe Google.',
+            'Chaque téléphone connecté dispose d’une session. Nous conservons une empreinte (hachage SHA-256) de son jeton de session, jamais le jeton lui-même, et sa date de dernière utilisation.',
+          ],
+        },
+        {
+          h: 'Vos dictées',
+          p: [
+            'Quand vous dictez, l’application envoie au serveur Souffle : l’enregistrement, la langue choisie (le cas échéant), les mots de votre dictionnaire (le cas échéant) et le nom technique de l’application dans laquelle vous écrivez (par exemple com.google.android.gm). Ce nom sert uniquement à adapter la mise en forme : un e-mail est présenté comme un e-mail, un message de discussion reste court.',
+            'Le serveur envoie l’enregistrement à Groq pour la reconnaissance vocale, puis le texte obtenu, les mots de votre dictionnaire et le type de destination (e-mail, discussion ou prompt d’IA) à l’API Gemini de Google pour la mise en forme. Le texte propre revient sur votre téléphone et est saisi dans le champ.',
+            'Ni l’enregistrement ni aucun texte n’est conservé. L’enregistrement n’existe que sous forme de fichier temporaire pendant les quelques secondes de la requête, sur votre téléphone et sur le serveur, puis il est supprimé. Les textes ne font que transiter par la mémoire du serveur. Rien de tout cela n’est écrit dans nos journaux ni dans notre base de données.',
+            'Pour chaque dictée, nous comptons seulement le nombre de mots et la durée de l’enregistrement, pour appliquer les limites hebdomadaires.',
+          ],
+        },
+        {
+          h: 'Le service d’accessibilité',
+          id: 'accessibility',
+          p: [
+            'Souffle utilise le service d’accessibilité d’Android. C’est la seule façon pour une application d’afficher un bouton sur le clavier des autres applications et de saisir du texte dans leurs champs. Souffle le demande avec un écran d’explication, et c’est vous qui l’activez dans les paramètres d’Android.',
+            'Grâce à ce service, Souffle :',
+          ],
+          ul: [
+            'détecte quand un champ de texte est sélectionné et que le clavier est ouvert, pour afficher la capsule au bon endroit ;',
+            'lit quelle application et quel clavier sont à l’écran, pour placer la capsule et adapter la mise en forme du texte ;',
+            'saisit votre texte dicté dans le champ sélectionné ; quand une application refuse la saisie directe, Souffle lit le contenu actuel de ce champ, sur votre téléphone uniquement, pour insérer le texte au niveau du curseur ;',
+            'ne fonctionne jamais dans les champs de mot de passe, ne lit jamais le reste de votre écran, et n’envoie ni ne conserve jamais ce qui est affiché ou ce que vous avez tapé.',
+          ],
+        },
+        {
+          h: 'Micro et notifications',
+          p: [
+            'Le micro n’est utilisé que pendant que la capsule enregistre, après que vous l’avez touchée. Une notification indique que Souffle écoute. Les notifications vous préviennent aussi quand vous atteignez votre limite de la semaine.',
+          ],
+        },
+        {
+          h: 'Souffle Pro et paiements',
+          p: [
+            'Souffle Pro est vendu sous forme d’abonnement via Google Play, qui gère le paiement. Nous recevons le jeton d’achat, le produit, l’état de l’abonnement, la date de renouvellement et s’il sera renouvelé, et nous les vérifions auprès de Google pour activer Pro. Nous ne voyons jamais vos informations de paiement. La politique de confidentialité de Google s’applique au paiement : policies.google.com/privacy.',
+          ],
+        },
+        {
+          h: 'Ce que nous journalisons',
+          id: 'logging',
+          p: [
+            'Comme tout serveur web, le nôtre tient des journaux techniques pour assurer le fonctionnement et la sécurité du service. Ils contiennent :',
+          ],
+          ul: [
+            'Journaux de l’application : l’heure, l’adresse appelée (par exemple /v1/dictate), le code de réponse, le temps de traitement et un numéro de requête aléatoire. Ils ne contiennent jamais votre adresse IP, votre adresse e-mail, d’enregistrement, de texte, les mots de votre dictionnaire ni l’application dans laquelle vous écrivez.',
+            'Le proxy web placé devant le serveur enregistre aussi l’adresse IP, l’heure, l’adresse appelée, le code de réponse et la description technique envoyée par le téléphone (user agent : version d’Android et modèle du téléphone), pour bloquer les attaques.',
+            'Tous les journaux sont supprimés au bout de 7 jours au maximum.',
+          ],
+        },
+        {
+          h: 'Qui traite vos données',
+          p: ['Nous ne vendons ni ne partageons vos données. Ces prestataires les traitent pour notre compte, uniquement pour faire fonctionner Souffle :'],
+          ul: [
+            'Oracle (Oracle Cloud Infrastructure) : hébergement du serveur et de la base de données Souffle, à Marseille, en France.',
+            'Groq, Inc. (États-Unis) : reconnaissance vocale de vos enregistrements. Nous avons activé la « conservation zéro » de Groq : Groq ne garde ni les enregistrements ni les transcriptions après traitement.',
+            'Google (API Gemini, service payant) : mise en forme du texte transcrit. Google n’utilise pas ces données pour améliorer ses produits ; il les conserve pendant une durée limitée, uniquement pour détecter les abus et respecter ses obligations légales.',
+            'Google (Se connecter avec Google, Google Play) : connexion et paiement des abonnements, selon la politique de confidentialité de Google.',
+          ],
+        },
+        {
+          h: 'Transferts hors de l’Union européenne',
+          p: [
+            'Groq et Google peuvent traiter des données aux États-Unis. Ces transferts reposent sur les clauses contractuelles types de la Commission européenne et, lorsque le prestataire est certifié, sur le cadre de protection des données UE-États-Unis (Data Privacy Framework). Vous pouvez nous demander une copie de ces garanties.',
+          ],
+        },
+        {
+          h: 'Pourquoi nous traitons vos données (bases légales)',
+          ul: [
+            'Fournir le service que vous demandez (compte, dictée, abonnement Pro) : exécution du contrat qui nous lie.',
+            'Limites hebdomadaires, usage raisonnable, journaux de sécurité et prévention des abus : notre intérêt légitime à garder Souffle fonctionnel, sûr et abordable.',
+            'Conservation des justificatifs d’achat lorsque la loi l’exige : obligation légale.',
+          ],
+        },
+        {
+          h: 'Durées de conservation',
+          ul: [
+            'Enregistrements et textes : non conservés (supprimés dès la fin de la dictée).',
+            'Compte (identifiant Google, e-mail, offre) : jusqu’à sa suppression, ou automatiquement après 24 mois sans aucune utilisation, sauf abonnement Pro encore actif.',
+            'Sessions : jusqu’à la déconnexion, ou après 12 mois sans utilisation.',
+            'Compteurs hebdomadaires de mots et de durée audio : 13 semaines.',
+            'Données d’abonnement : tant que le compte existe, et au plus 13 mois après la fin de l’abonnement.',
+            'Journaux : 7 jours au maximum.',
+          ],
+        },
+        {
+          h: 'Sécurité',
+          p: [
+            'Tous les échanges entre l’application et le serveur sont chiffrés (HTTPS). Les jetons de session ne sont conservés que sous forme de hachage. Les clés de nos prestataires d’IA restent sur le serveur et ne figurent jamais dans l’application. L’accès au serveur est réservé à l’éditeur.',
+          ],
+        },
+        {
+          h: 'Supprimer votre compte',
+          id: 'delete-account',
+          p: ['Vous pouvez supprimer votre compte Souffle et ses données à tout moment :'],
+          ul: [
+            'Dans l’application : Paramètres > Supprimer le compte. Votre compte, vos sessions, vos compteurs et vos données d’abonnement sont immédiatement supprimés de notre base de données. Les journaux disparaissent sous 7 jours.',
+            'Sans l’application : écrivez à contact@galernestudio.com depuis l’adresse e-mail de votre compte Souffle, avec l’objet « Supprimer mon compte Souffle ». Nous le supprimons sous 30 jours et vous le confirmons par e-mail.',
+            'Supprimer votre compte ne résilie pas un abonnement Souffle Pro : résiliez-le d’abord dans Google Play (Paiements et abonnements > Abonnements).',
+            'Les réglages enregistrés sur votre téléphone (langue, dictionnaire, position de la capsule) sont supprimés quand vous désinstallez Souffle.',
+          ],
+        },
+        {
+          h: 'Enfants',
+          p: ['Souffle ne s’adresse pas aux enfants de moins de 15 ans.'],
+        },
+        {
+          h: 'Vos droits',
+          p: [
+            'Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’effacement et de portabilité de vos données, d’un droit d’opposition et de limitation, ainsi que du droit de définir des directives sur leur sort après votre décès. La suppression du compte depuis l’application est immédiate.',
+            'Pour exercer vos droits, écrivez à contact@galernestudio.com depuis l’adresse e-mail de votre compte. Nous répondons sous un mois. Vous pouvez aussi introduire une réclamation auprès de la CNIL (www.cnil.fr).',
+          ],
+        },
+        changes.fr,
+      ],
+    },
+  },
   kioku: {
     updated: '2026-10-29',
     sections: {

@@ -110,6 +110,22 @@ export const apps: AppEntry[] = [
     hasPage: true,
   },
   {
+    slug: 'souffle',
+    name: 'Souffle',
+    initial: 'S',
+    bg: '#1E2A5E',
+    fg: '#6FD3BF',
+    kinds: ['android'],
+    platform: { en: 'Android', fr: 'Android' },
+    desc: {
+      en: 'Speak in any app, get clean, ready-to-send text. Voice dictation that removes the ums and fixes the punctuation.',
+      fr: 'Parlez dans n’importe quelle appli, obtenez un texte propre, prêt à envoyer. La dictée vocale qui enlève les « euh » et corrige la ponctuation.',
+    },
+    // Uncomment once Souffle is public on Google Play (the link 404s during the closed test):
+    // playUrl: play('com.galernestudio.souffle'),
+    hasPage: true,
+  },
+  {
     slug: 'kioku',
     name: 'Kioku',
     initial: 'K',
@@ -126,13 +142,15 @@ export const apps: AppEntry[] = [
   },
 ];
 
-export const counts = { total: 8, android: 5, windows: 3 };
+export const counts = { total: 9, android: 6, windows: 3 };
 
 export interface AppPageData {
   tagline: Record<Lang, string>;
   meta: Record<Lang, string>;
-  features: { icon: 'scan' | 'cards' | 'lock' | 'book' | 'hint' | 'trophy' | 'calc' | 'globe'; title: Record<Lang, string>; body: Record<Lang, string> }[];
+  features: { icon: 'scan' | 'cards' | 'lock' | 'book' | 'hint' | 'trophy' | 'calc' | 'globe' | 'mic' | 'sparkle'; title: Record<Lang, string>; body: Record<Lang, string> }[];
   supportHint: Record<Lang, string>;
+  /** Optional text for the privacy card (defaults to the ads-and-consent one) */
+  privacyBlurb?: Record<Lang, string>;
   /** Optional screenshots placed in /public/screenshots/<slug>/ */
   screenshots: string[];
   iconBg: string;
@@ -146,6 +164,52 @@ export interface AppPageData {
 }
 
 export const appPages: Record<string, AppPageData> = {
+  souffle: {
+    tagline: {
+      en: 'Speak in any app, Souffle writes it for you. Clean, punctuated, ready-to-send text in WhatsApp, Gmail, ChatGPT and everywhere else, with the keyboard you already use.',
+      fr: 'Parlez dans n’importe quelle appli, Souffle l’écrit pour vous. Un texte propre, ponctué, prêt à envoyer dans WhatsApp, Gmail, ChatGPT et partout ailleurs, avec le clavier que vous utilisez déjà.',
+    },
+    meta: { en: 'Free · Pro €5.99/month · Android · 9 languages', fr: 'Gratuit · Pro 5,99 €/mois · Android · 9 langues' },
+    iconBg: '#1E2A5E',
+    iconFg: '#6FD3BF',
+    category: 'ProductivityApplication',
+    languages: ['en', 'fr', 'es', 'de', 'it', 'pt-BR', 'ja', 'ko', 'zh-Hans'],
+    screenshots: [],
+    supportHint: {
+      en: 'A word Souffle keeps getting wrong, or an app where the capsule misbehaves? Write to us.',
+      fr: 'Un mot que Souffle écrit toujours mal, ou une appli où la capsule se comporte mal ? Écrivez-nous.',
+    },
+    privacyBlurb: {
+      en: 'Your voice is recorded only when you tap the capsule, and neither recordings nor texts are ever stored. Read exactly what Souffle processes, who processes it and for how long.',
+      fr: 'Votre voix n’est enregistrée que lorsque vous touchez la capsule, et ni les enregistrements ni les textes ne sont conservés. Découvrez précisément ce que Souffle traite, par qui et combien de temps.',
+    },
+    features: [
+      {
+        icon: 'mic',
+        title: { en: 'Dictate anywhere', fr: 'Dictez partout' },
+        body: {
+          en: 'A small capsule appears on your keyboard in every app. Tap, speak, tap again: the text is typed for you.',
+          fr: 'Une petite capsule apparaît sur votre clavier dans toutes les applis. Touchez, parlez, touchez à nouveau : le texte est saisi pour vous.',
+        },
+      },
+      {
+        icon: 'sparkle',
+        title: { en: 'Clean text, not a transcript', fr: 'Un texte propre, pas une transcription' },
+        body: {
+          en: 'Hesitations removed, punctuation and paragraphs added, self-corrections applied. Emails come out as emails.',
+          fr: 'Hésitations supprimées, ponctuation et paragraphes ajoutés, corrections prises en compte. Les e-mails sortent comme des e-mails.',
+        },
+      },
+      {
+        icon: 'lock',
+        title: { en: 'Nothing kept', fr: 'Rien n’est conservé' },
+        body: {
+          en: 'Recordings and texts are never stored or used to train AI. 2,000 words a week free, unlimited with Pro.',
+          fr: 'Enregistrements et textes ne sont jamais conservés ni utilisés pour entraîner une IA. 2 000 mots par semaine gratuits, illimité avec Pro.',
+        },
+      },
+    ],
+  },
   fidele: {
     tagline: {
       en: 'All your loyalty cards in one place. Scan once, show the barcode at checkout, leave the plastic at home.',

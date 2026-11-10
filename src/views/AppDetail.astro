@@ -78,7 +78,7 @@ const jsonLd = [
   <section class="container info">
     <div class="info-card">
       <h2>{s.appPage.privacyTitle}</h2>
-      <p>{s.appPage.privacyBody(app.name)}</p>
+      <p>{page.privacyBlurb?.[lang] ?? s.appPage.privacyBody(app.name)}</p>
       <a class="link" href={localePath(lang, `/privacy/${slug}`)}>{s.appPage.privacyLink}</a>
       {termsApps[slug] && <a class="link" href={localePath(lang, `/terms/${slug}`)}>{s.appPage.termsLink}</a>}
     </div>

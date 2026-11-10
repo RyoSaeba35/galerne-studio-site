@@ -1,5 +1,7 @@
 import type { Lang } from './apps';
 import type { Section } from './privacy';
+import { publisher } from './publisher';
+import { souffleTerms } from './terms-souffle';
 
 /**
  * Terms of use for the apps that have a page on galernestudio.com.
@@ -7,15 +9,7 @@ import type { Section } from './privacy';
  * /terms/<slug> and /fr/terms/<slug>.
  */
 
-export const publisher = {
-  name: 'Pierre Libran',
-  trade: 'Galerne Studio',
-  siret: '106 996 812 00017',
-  address: '23 rue Dumenge, 69004 Lyon, France',
-  email: 'contact@galernestudio.com',
-  /** Consumer mediator (mandatory in France for B2C). Fill in once you have signed up with one. */
-  mediator: { name: '[MÉDIATEUR]', url: '[URL DU MÉDIATEUR]' },
-};
+export { publisher } from './publisher';
 
 interface AppTerms { name: string; updated: string; ads: boolean }
 
@@ -23,11 +17,14 @@ export const termsApps: Record<string, AppTerms> = {
   fidele: { name: 'Fidèle', updated: '2026-11-05', ads: true },
   'kotoba-ciphers': { name: 'Kotoba Ciphers', updated: '2026-11-05', ads: true },
   kioku: { name: 'Kioku', updated: '2026-11-05', ads: true },
+  // Souffle has an account and a subscription: its own text, in terms-souffle.ts.
+  souffle: { name: 'Souffle', updated: '2026-11-10', ads: false },
 };
 
 const p = publisher;
 
 export function termsFor(slug: string, lang: Lang): Section[] {
+  if (slug === 'souffle') return souffleTerms(lang);
   const app = termsApps[slug];
   const n = app.name;
 

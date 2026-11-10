@@ -45,6 +45,15 @@ Cloudflare dashboard > galernestudio.com > Email > Email Routing > enable, then 
 - Terms of service URL (Play Console trader declaration, per app): `https://galernestudio.com/terms/fidele`,
   `https://galernestudio.com/terms/kotoba-ciphers`, `https://galernestudio.com/terms/kioku`.
 
+## Souffle
+
+- Play Console > App content > Privacy policy: `https://galernestudio.com/privacy/souffle`
+- Data deletion URL (Data safety form): `https://galernestudio.com/privacy/souffle#delete-account`
+- Terms of service: `https://galernestudio.com/terms/souffle` (fair use: `#fair-use`, withdrawal: `#withdrawal`)
+- Logging policy: `https://galernestudio.com/privacy/souffle#logging`
+- Keep the limits in `src/data/terms-souffle.ts` in sync with the server's environment variables.
+- When Souffle is public on Google Play, uncomment `playUrl` in `src/data/apps.ts`.
+
 ## Adding an app
 
 Add an entry in `src/data/apps.ts`. To give it a page on this site, set `hasPage: true`, add an
