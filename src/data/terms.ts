@@ -11,12 +11,20 @@ import { souffleTerms } from './terms-souffle';
 
 export { publisher } from './publisher';
 
-interface AppTerms { name: string; updated: string; ads: boolean }
+interface AppTerms {
+  name: string;
+  updated: string;
+  ads: boolean;
+  /** Optional voluntary tips through Google Play (unlock nothing) */
+  tips?: boolean;
+  /** Minimum age set in the Play Console target audience */
+  minAge?: number;
+}
 
 export const termsApps: Record<string, AppTerms> = {
   fidele: { name: 'Fidèle', updated: '2026-11-05', ads: true },
   'kotoba-ciphers': { name: 'Kotoba Ciphers', updated: '2026-11-05', ads: true },
-  kioku: { name: 'Kioku', updated: '2026-11-05', ads: true },
+  kioku: { name: 'Kioku', updated: '2026-11-13', ads: true, tips: true, minAge: 13 },
   // Souffle has an account and a subscription: its own text, in terms-souffle.ts.
   souffle: { name: 'Souffle', updated: '2026-11-10', ads: false },
 };
@@ -42,12 +50,18 @@ export function termsFor(slug: string, lang: Lang): Section[] {
         p: [
           `Les présentes conditions d’utilisation encadrent l’utilisation de l’application ${n}, distribuée sur Google Play. En installant ou en utilisant l’application, vous les acceptez. Si vous ne les acceptez pas, n’utilisez pas l’application.`,
           'Les conditions de Google Play s’appliquent également au téléchargement et à tout achat effectué via Google Play.',
+          ...(app.minAge
+            ? [`${n} est destinée aux personnes âgées de ${app.minAge} ans et plus. Si vous avez moins de 18 ans, utilisez l’application avec l’accord d’un parent ou d’un tuteur, en particulier avant tout pourboire.`]
+            : []),
         ],
       },
       {
         h: 'Prix',
         p: [
           `${n} est gratuite. ${app.ads ? 'Elle est financée par la publicité, comme indiqué dans sa politique de confidentialité. ' : ''}Si un achat intégré est proposé un jour, son prix et son contenu seront affichés avant la validation, et le paiement sera traité par Google Play.`,
+          ...(app.tips
+            ? ['Vous pouvez, si vous le souhaitez, laisser un pourboire pour soutenir le développement. Il est entièrement facultatif, ne débloque aucune fonction ni aucun contenu, et toute l’application reste disponible sans pourboire. Le montant, taxes comprises, est affiché par Google Play avant la validation, et le paiement est traité par Google Play. Les remboursements suivent la politique de Google Play et les droits que vous accorde la loi.']
+            : []),
         ],
       },
       {
@@ -117,12 +131,18 @@ export function termsFor(slug: string, lang: Lang): Section[] {
       p: [
         `These terms of use govern your use of the ${n} app, distributed on Google Play. By installing or using the app, you accept them. If you do not accept them, do not use the app.`,
         'Google Play’s terms also apply to the download and to any purchase made through Google Play.',
+        ...(app.minAge
+          ? [`${n} is intended for people aged ${app.minAge} and over. If you are under 18, use the app with the agreement of a parent or guardian, especially before giving a tip.`]
+          : []),
       ],
     },
     {
       h: 'Price',
       p: [
         `${n} is free. ${app.ads ? 'It is funded by advertising, as described in its privacy policy. ' : ''}If an in-app purchase is ever offered, its price and content will be shown before you confirm, and payment will be handled by Google Play.`,
+        ...(app.tips
+          ? ['You can, if you wish, leave a tip to support development. Tips are entirely optional, unlock no feature or content, and the whole app stays available without one. The amount, taxes included, is shown by Google Play before you confirm, and payment is handled by Google Play. Refunds follow Google Play’s policy and your statutory rights.']
+          : []),
       ],
     },
     {
