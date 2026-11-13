@@ -5,6 +5,8 @@ export const site = {
   email: 'contact@galernestudio.com',
   x: 'https://x.com/galernestudio',
   firefly: 'https://www.thelittlefirefly.co.uk',
+  /** Cloudflare Turnstile site key for the project form (Cloudflare > Turnstile > Add widget). Leave empty to disable. */
+  turnstileSiteKey: '',
   /** Umami (self-hosted, cookieless). Paste the website ID from Umami > Edit > Tracking code. */
   umami: {
     src: 'https://stats.galernestudio.com/script.js',
@@ -21,7 +23,7 @@ export function localePath(lang: Lang, path: string): string {
 export const t = {
   en: {
     metaDesc: 'Galerne Studio is an independent software studio in Lyon, France, building focused apps for Android and Windows.',
-    nav: { apps: 'Apps', about: 'About', contact: 'Contact', switchLabel: 'Version française', switchText: 'FR' },
+    nav: { apps: 'Apps', about: 'About', work: 'Work with us', contact: 'Contact', switchLabel: 'Version française', switchText: 'FR' },
     hero: {
       eyebrow: 'Independent software studio · Lyon, France',
       title: 'Small apps that do one thing well.',
@@ -33,7 +35,7 @@ export const t = {
     apps: {
       title: 'Our apps',
       sub: 'Everything we’ve shipped, on mobile and desktop.',
-      filters: { all: 'All', android: 'Android', windows: 'Windows' },
+      filters: { all: 'All', android: 'Android', windows: 'Windows', web: 'Web' },
       filterLabel: 'Filter apps by platform',
       details: 'Details',
       website: 'Website',
@@ -48,7 +50,7 @@ export const t = {
     },
     about: {
       title: 'Named after a wind.',
-      body: 'The galerne is the northwest wind that sweeps the French Atlantic coast: sudden, clear and cold. Galerne Studio is a one-person studio in Lyon building software with the same spirit: light, fast and honest.',
+      body: 'The galerne is the northwest wind that sweeps the French Atlantic coast: sudden, clear and cold. Galerne Studio is a small, independent studio in Lyon building software with the same spirit: light, fast and honest.',
       values: [
         { icon: 'clock', title: 'Focused', body: 'Each app solves one problem and gets out of your way.' },
         { icon: 'lock', title: 'Privacy-minded', body: 'We collect as little data as we can, and say clearly what we do collect.' },
@@ -57,7 +59,31 @@ export const t = {
     },
     contact: {
       title: 'Questions, bugs or ideas?',
-      sub: 'Every message is read by the person who wrote the app.',
+      sub: 'Every message is read by the people who build the apps.',
+      copy: 'Copy',
+      copied: 'Copied',
+      copyLabel: 'Copy the email address',
+    },
+    work: {
+      eyebrow: 'Work with us',
+      title: 'Need an app, a website or a SaaS?',
+      sub: 'We build for clients too: Android and iOS apps, websites, SaaS products, desktop tools and backends. Tell us about your project and we will come back with a price estimate and next steps.',
+      points: ['Fixed quote before any work starts', 'Code and accounts belong to you', 'Built and supported from Lyon, France'],
+      name: 'Name',
+      email: 'Email',
+      company: 'Company (optional)',
+      type: 'Project type',
+      types: ['Mobile app', 'Website', 'SaaS / web app', 'Desktop software', 'Other'],
+      timeline: 'Timeline (optional)',
+      timelines: ['Flexible', 'Within a month', '1 to 3 months', '3 months or more'],
+      message: 'Tell us about your project',
+      messageHint: 'What should it do, who is it for, and anything that already exists (designs, an existing app, a deadline).',
+      choose: 'Choose…',
+      consent: 'Your details are only used to reply to your request and are never shared.',
+      send: 'Send request',
+      sending: 'Sending…',
+      ok: 'Thanks! Your request has been sent. We will reply by email shortly.',
+      error: 'Sorry, the message could not be sent. Please email us directly at',
     },
     footer: { legal: 'Legal notice', privacy: 'Privacy policies', rights: 'Lyon, France' },
     appPage: {
@@ -82,7 +108,7 @@ export const t = {
   },
   fr: {
     metaDesc: 'Galerne Studio est un studio de logiciels indépendant basé à Lyon, qui crée des applications simples et efficaces pour Android et Windows.',
-    nav: { apps: 'Applications', about: 'À propos', contact: 'Contact', switchLabel: 'English version', switchText: 'EN' },
+    nav: { apps: 'Applications', about: 'À propos', work: 'Travailler avec nous', contact: 'Contact', switchLabel: 'English version', switchText: 'EN' },
     hero: {
       eyebrow: 'Studio de logiciels indépendant · Lyon, France',
       title: 'Des petites applis qui font une chose, et bien.',
@@ -94,7 +120,7 @@ export const t = {
     apps: {
       title: 'Nos applications',
       sub: 'Tout ce que nous avons publié, sur mobile et sur ordinateur.',
-      filters: { all: 'Toutes', android: 'Android', windows: 'Windows' },
+      filters: { all: 'Toutes', android: 'Android', windows: 'Windows', web: 'Web' },
       filterLabel: 'Filtrer les applications par plateforme',
       details: 'Détails',
       website: 'Site web',
@@ -109,7 +135,7 @@ export const t = {
     },
     about: {
       title: 'Le nom d’un vent.',
-      body: 'La galerne est le vent de nord-ouest qui balaie la côte atlantique : soudain, clair et froid. Galerne Studio est un studio d’une personne, à Lyon, qui conçoit des logiciels dans le même esprit : légers, rapides et honnêtes.',
+      body: 'La galerne est le vent de nord-ouest qui balaie la côte atlantique : soudain, clair et froid. Galerne Studio est un petit studio indépendant, à Lyon, qui conçoit des logiciels dans le même esprit : légers, rapides et honnêtes.',
       values: [
         { icon: 'clock', title: 'Simples', body: 'Chaque appli résout un problème, puis se fait oublier.' },
         { icon: 'lock', title: 'Respect de la vie privée', body: 'Nous collectons le moins de données possible, et disons clairement lesquelles.' },
@@ -117,8 +143,32 @@ export const t = {
       ],
     },
     contact: {
-      title: 'Une question, un bug, une idée ?',
-      sub: 'Chaque message est lu par la personne qui a écrit l’application.',
+      title: 'Une question, un bug, une idée ?',
+      sub: 'Chaque message est lu par ceux qui développent les applications.',
+      copy: 'Copier',
+      copied: 'Copié',
+      copyLabel: 'Copier l’adresse e-mail',
+    },
+    work: {
+      eyebrow: 'Travailler avec nous',
+      title: 'Besoin d’une appli, d’un site ou d’un SaaS ?',
+      sub: 'Nous développons aussi pour nos clients : applications Android et iOS, sites web, produits SaaS, logiciels de bureau et backends. Décrivez votre projet et nous revenons vers vous avec une estimation de prix et les prochaines étapes.',
+      points: ['Devis ferme avant tout démarrage', 'Le code et les comptes vous appartiennent', 'Conçu et maintenu depuis Lyon'],
+      name: 'Nom',
+      email: 'E-mail',
+      company: 'Entreprise (facultatif)',
+      type: 'Type de projet',
+      types: ['Application mobile', 'Site web', 'SaaS / application web', 'Logiciel de bureau', 'Autre'],
+      timeline: 'Délai (facultatif)',
+      timelines: ['Flexible', 'Sous un mois', '1 à 3 mois', '3 mois ou plus'],
+      message: 'Parlez-nous de votre projet',
+      messageHint: 'Ce qu’il doit faire, pour qui, et ce qui existe déjà (maquettes, appli existante, échéance).',
+      choose: 'Choisir…',
+      consent: 'Vos informations servent uniquement à répondre à votre demande et ne sont jamais partagées.',
+      send: 'Envoyer la demande',
+      sending: 'Envoi…',
+      ok: 'Merci ! Votre demande a bien été envoyée. Nous vous répondons par e-mail très vite.',
+      error: 'Désolé, le message n’a pas pu être envoyé. Écrivez-nous directement à',
     },
     footer: { legal: 'Mentions légales', privacy: 'Politiques de confidentialité', rights: 'Lyon, France' },
     appPage: {

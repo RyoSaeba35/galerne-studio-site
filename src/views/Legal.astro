@@ -37,6 +37,14 @@ const fr = lang === 'fr';
       ? 'La fréquentation est mesurée avec Umami, un outil de mesure d’audience auto-hébergé par Galerne Studio (serveur Railway). Umami ne dépose aucun cookie, ne stocke pas votre adresse IP et ne permet pas de vous identifier : il produit uniquement des statistiques agrégées (pages vues, pays, type d’appareil, site de provenance). Conformément aux recommandations de la CNIL sur les outils de mesure d’audience exemptés de consentement, aucun bandeau n’est donc nécessaire.'
       : 'Visits are measured with Umami, an analytics tool self-hosted by Galerne Studio (Railway server). Umami sets no cookies, does not store your IP address and cannot identify you: it only produces aggregate statistics (page views, country, device type, referring site). In line with CNIL guidance on consent-exempt audience measurement, no consent banner is needed.'}</p>
 
+    <h2>{fr ? 'Formulaire de contact' : 'Contact form'}</h2>
+    <p>{fr
+      ? 'Les informations envoyées via le formulaire « Travailler avec nous » (nom, e-mail, entreprise, description du projet) sont transmises par e-mail à Galerne Studio via Cloudflare Email Routing. Elles servent uniquement à répondre à votre demande et à établir un devis, ne sont ni stockées sur le site ni partagées, et sont supprimées de notre messagerie au plus tard 3 ans après le dernier échange. Vous pouvez demander leur suppression à tout moment en écrivant à ' 
+      : 'Details sent through the "Work with us" form (name, email, company, project description) are delivered by email to Galerne Studio through Cloudflare Email Routing. They are only used to reply to your request and prepare a quote, are neither stored on the site nor shared, and are deleted from our mailbox no later than 3 years after our last exchange. You can ask for their deletion at any time by writing to '}<a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    {site.turnstileSiteKey && <p>{fr
+      ? 'Le formulaire est protégé contre le spam par Cloudflare Turnstile, qui ne dépose pas de cookie publicitaire.'
+      : 'The form is protected against spam by Cloudflare Turnstile, which sets no advertising cookies.'}</p>}
+
     <h2>{fr ? 'Applications' : 'Apps'}</h2>
     <p>{fr
       ? 'Chaque application dispose de sa propre politique de confidentialité, accessible depuis la page Politiques de confidentialité, et de ses propres conditions d’utilisation, accessibles depuis sa page. Les applications ayant leur propre site y publient ces documents.'

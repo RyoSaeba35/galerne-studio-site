@@ -1,5 +1,5 @@
 export type Lang = 'en' | 'fr';
-export type Kind = 'android' | 'windows';
+export type Kind = 'android' | 'windows' | 'web';
 
 export interface AppEntry {
   slug: string;
@@ -140,9 +140,27 @@ export const apps: AppEntry[] = [
     playUrl: play('com.galernestudio.kioku'),
     hasPage: true,
   },
+  {
+    slug: 'gardien',
+    name: 'Gardien',
+    initial: 'G',
+    bg: '#1F5F4A',
+    fg: '#F4F1EA',
+    kinds: ['web'],
+    platform: { en: 'Web · French only', fr: 'Web' },
+    desc: {
+      en: 'Building breakdowns, tracked until they are fixed. Residents report a broken light, door or lift with a photo, and the property manager gets it by email.',
+      fr: 'Les pannes de l’immeuble, suivies jusqu’à la réparation. Les résidents signalent une lumière, une porte ou un ascenseur en panne avec une photo, et la régie est prévenue par e-mail.',
+    },
+    website: same('https://gardien-app.duckdns.org'),
+  },
 ];
 
-export const counts = { total: 9, android: 6, windows: 3 };
+export const counts = {
+  total: apps.length,
+  android: apps.filter((a) => a.kinds.includes('android')).length,
+  windows: apps.filter((a) => a.kinds.includes('windows')).length,
+};
 
 export interface AppPageData {
   tagline: Record<Lang, string>;

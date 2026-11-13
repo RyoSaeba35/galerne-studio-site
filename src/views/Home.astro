@@ -8,6 +8,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t[lang];
 const tiles = ['vulcainvpn', 'sideby', 'fidele', 'topotree'].map((slug) => apps.find((a) => a.slug === slug)!);
+const w = s.work;
 const tileHref = (a: (typeof apps)[number]) => (a.hasPage ? localePath(lang, `/apps/${a.slug}`) : a.website?.[lang] ?? a.playUrl!);
 
 const jsonLd = [
@@ -78,6 +79,7 @@ const jsonLd = [
           <button type="button" class="filter" data-filter="all" aria-pressed="true">{s.apps.filters.all}</button>
           <button type="button" class="filter" data-filter="android" aria-pressed="false">{s.apps.filters.android}</button>
           <button type="button" class="filter" data-filter="windows" aria-pressed="false">{s.apps.filters.windows}</button>
+          <button type="button" class="filter" data-filter="web" aria-pressed="false">{s.apps.filters.web}</button>
         </div>
       </div>
 
@@ -138,13 +140,84 @@ const jsonLd = [
     </div>
   </section>
 
+  <section id="work" class="band">
+    <div class="container section work">
+      <div class="work-text">
+        <p class="eyebrow">{w.eyebrow}</p>
+        <h2 class="h2">{w.title}</h2>
+        <p class="muted">{w.sub}</p>
+        <ul class="work-points">
+          {w.points.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+
+      <form class="work-form" id="work-form" action="/api/contact" method="post" novalidate>
+        <input type="hidden" name="lang" value={lang} />
+        <div class="hp" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <div class="row">
+          <label class="field">
+            <span>{w.name}</span>
+            <input type="text" name="name" required maxlength="120" autocomplete="name" />
+          </label>
+          <label class="field">
+            <span>{w.email}</span>
+            <input type="email" name="email" required maxlength="200" autocomplete="email" />
+          </label>
+        </div>
+        <label class="field">
+          <span>{w.company}</span>
+          <input type="text" name="company" maxlength="160" autocomplete="organization" />
+        </label>
+        <fieldset class="field">
+          <legend>{w.type}</legend>
+          <div class="chips">
+            {w.types.map((label, i) => (
+              <label class="chip"><input type="radio" name="type" value={label} required checked={i === 0} /><span>{label}</span></label>
+            ))}
+          </div>
+        </fieldset>
+        <label class="field">
+          <span>{w.timeline}</span>
+          <select name="timeline">
+            {w.timelines.map((b) => <option value={b}>{b}</option>)}
+          </select>
+        </label>
+        <label class="field">
+          <span>{w.message}</span>
+          <textarea name="message" rows="6" required minlength="20" maxlength="5000" placeholder={w.messageHint}></textarea>
+        </label>
+        {site.turnstileSiteKey && (
+          <>
+            <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey} data-language={lang}></div>
+            <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          </>
+        )}
+        <p class="form-note">{w.consent}</p>
+        <div class="form-actions">
+          <button class="btn btn-dark" type="submit" data-sending={w.sending}>{w.send}</button>
+          <p class="form-status" role="status" aria-live="polite" hidden></p>
+        </div>
+        <p class="form-error" role="alert" hidden>{w.error} <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+        <p class="form-ok" role="status" hidden>{w.ok}</p>
+      </form>
+    </div>
+  </section>
+
   <section id="contact" class="container contact">
     <div class="contact-box">
       <div>
         <h2>{s.contact.title}</h2>
         <p>{s.contact.sub}</p>
       </div>
-      <a class="btn btn-mint" href={`mailto:${site.email}`}>{site.email}</a>
+      <div class="email-row">
+        <a class="btn btn-mint" href={`mailto:${site.email}`}>{site.email}</a>
+        <button type="button" class="btn btn-copy" data-copy={site.email} data-copied={s.contact.copied} aria-label={s.contact.copyLabel}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>{s.contact.copy}</span>
+        </button>
+      </div>
     </div>
   </section>
 </Base>
@@ -161,4 +234,65 @@ const jsonLd = [
       });
     }),
   );
+
+  // Copy email
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const label = btn.querySelector('span')!;
+    const original = label.textContent;
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy!;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      }
+      label.textContent = btn.dataset.copied!;
+      btn.classList.add('is-copied');
+      setTimeout(() => {
+        label.textContent = original;
+        btn.classList.remove('is-copied');
+      }, 2000);
+    });
+  });
+
+  // Project form
+  const form = document.querySelector<HTMLFormElement>('#work-form');
+  if (form) {
+    const submit = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    const okMsg = form.querySelector<HTMLElement>('.form-ok')!;
+    const errMsg = form.querySelector<HTMLElement>('.form-error')!;
+    const idle = submit.textContent;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errMsg.hidden = true;
+      if (!form.reportValidity()) return;
+      submit.disabled = true;
+      submit.textContent = submit.dataset.sending!;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.querySelectorAll<HTMLElement>('.row, .field, .form-note, .form-actions, .cf-turnstile').forEach((el) => (el.hidden = true));
+        okMsg.hidden = false;
+        okMsg.focus?.();
+      } catch {
+        errMsg.hidden = false;
+        // @ts-ignore Turnstile global, when enabled
+        window.turnstile?.reset?.();
+      } finally {
+        submit.disabled = false;
+        submit.textContent = idle;
+      }
+    });
+  }
 </script>

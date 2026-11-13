@@ -34,6 +34,24 @@ Every `git push` to `main` redeploys automatically.
 Cloudflare dashboard > galernestudio.com > Email > Email Routing > enable, then add a rule
 `contact@galernestudio.com` forwarding to your inbox. Free, takes 2 minutes.
 
+## Project form ("Work with us")
+
+The form posts to `/api/contact`, handled by `worker/index.ts`, which emails each request to you
+through Cloudflare Email Routing (free). Reply-To is set to the client, so you just hit Reply.
+
+1. Email Routing must be enabled on galernestudio.com (see above), and your real inbox must be a
+   verified destination address (Email > Email Routing > Destination addresses).
+2. Tell the worker where to send requests (kept out of the repo):
+   `npx wrangler secret put CONTACT_TO` and enter that verified inbox.
+3. Deploy: `npm run build && npx wrangler deploy` (or push, if the Git integration builds with `npx wrangler deploy`).
+4. Optional anti-spam with Cloudflare Turnstile (free): Cloudflare > Turnstile > Add widget for
+   galernestudio.com, paste the site key in `turnstileSiteKey` in `src/i18n.ts`, then
+   `npx wrangler secret put TURNSTILE_SECRET`. Without it, a honeypot field and a 5-per-minute
+   rate limit per IP are already active.
+
+Test locally: `npm run build && npx wrangler dev --var CONTACT_TO:you@example.com`, then submit the
+form. Emails are written to `.wrangler/tmp/email/` instead of being sent.
+
 ## After deploy
 
 - Check https://galernestudio.com/app-ads.txt loads as plain text.
@@ -56,5 +74,5 @@ Cloudflare dashboard > galernestudio.com > Email > Email Routing > enable, then 
 
 ## Adding an app
 
-Add an entry in `src/data/apps.ts`. To give it a page on this site, set `hasPage: true`, add an
+Add an entry in `src/data/apps.ts` (home page counters update automatically). To give it a page on this site, set `hasPage: true`, add an
 `appPages` entry, a policy in `src/data/privacy.ts` and an entry in `termsApps` in `src/data/terms.ts`. Pages are generated automatically.

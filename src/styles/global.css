@@ -98,13 +98,53 @@ p { margin: 0; }
 .value p { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
 
 /* Contact */
-.contact { margin-bottom: 96px; }
+.contact { margin-block: 96px; }
 .contact-box { background: var(--ink); color: #fff; border-radius: 28px; padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px; }
 .contact-box > div { display: flex; flex-direction: column; gap: 12px; flex: 1 1 360px; min-width: 0; }
 .contact-box h2 { font-size: clamp(28px, 3.5vw, 38px); }
 .contact-box p { font-size: 17px; color: #B8C6CC; }
 .btn-mint { background: var(--mint); color: var(--ink); border-color: var(--mint); font-weight: 700; font-size: 17px; padding: 14px 28px; border-radius: 14px; word-break: break-all; }
 .btn-mint:hover { background: #7AE4D6; color: var(--ink); }
+
+/* Email copy */
+.contact-box > .email-row { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: stretch; flex: 0 1 auto; }
+.btn-copy { gap: 8px; background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.35); font: inherit; font-weight: 600; font-size: 15px; border-radius: 14px; cursor: pointer; padding: 12px 18px; }
+.btn-copy:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.contact-box > .email-row .btn-mint { word-break: normal; }
+@media (max-width: 480px) {
+  .contact-box > .email-row { flex: 1 1 100%; }
+  .contact-box > .email-row .btn-mint { flex: 1 1 100%; font-size: 16px; padding: 14px 16px; }
+}
+.btn-copy.is-copied { border-color: var(--mint); color: var(--mint); }
+
+/* Work with us */
+.work { flex-direction: row; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
+.work-text { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.work-points { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; color: var(--ink); font-weight: 500; }
+.work-points li { display: flex; gap: 10px; align-items: baseline; }
+.work-points li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); flex-shrink: 0; transform: translateY(-1px); }
+.work-form { flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px; background: var(--ground); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 32px); }
+.work-form [hidden] { display: none !important; }
+.work-form .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.field > span, .field > legend { font-size: 14px; font-weight: 600; padding: 0; margin-bottom: 6px; }
+.field > span { margin-bottom: 0; }
+.field input, .field select, .field textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: 10px; padding: 11px 14px; min-height: 48px; width: 100%; }
+.field textarea { resize: vertical; min-height: 140px; line-height: 1.5; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--surface); font-size: 14px; font-weight: 600; cursor: pointer; }
+.chip input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.form-note { font-size: 13px; color: var(--ink-3); }
+.form-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.form-actions .btn { cursor: pointer; font-family: inherit; }
+.form-actions .btn:disabled { opacity: 0.6; cursor: progress; }
+.form-ok { font-size: 17px; font-weight: 600; color: var(--accent); padding: 8px 0; }
+.form-error { font-size: 15px; color: #9B2C2C; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* Footer */
 .footer { border-top: 1px solid var(--line); }
