@@ -43,11 +43,6 @@ export const t = {
       msStore: 'Microsoft Store',
       opensIn: (name: string) => `${name} website`,
     },
-    also: {
-      eyebrow: 'Also by Galerne Studio',
-      desc: 'practical guides for people moving to the UK to study, work or live.',
-      visit: 'Visit thelittlefirefly.co.uk',
-    },
     about: {
       title: 'Named after a wind.',
       body: 'The galerne is the northwest wind that sweeps the French Atlantic coast: sudden, clear and cold. Galerne Studio is a small, independent studio in Lyon building software with the same spirit: light, fast and honest.',
@@ -127,11 +122,6 @@ export const t = {
       play: 'Google Play',
       msStore: 'Microsoft Store',
       opensIn: (name: string) => `Site web de ${name}`,
-    },
-    also: {
-      eyebrow: 'Aussi par Galerne Studio',
-      desc: 'des guides pratiques pour s’installer au Royaume-Uni pour étudier, travailler ou vivre.',
-      visit: 'Visiter thelittlefirefly.co.uk',
     },
     about: {
       title: 'Le nom d’un vent.',

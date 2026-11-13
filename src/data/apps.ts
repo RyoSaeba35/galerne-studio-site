@@ -15,6 +15,8 @@ export interface AppEntry {
   website?: Record<Lang, string>;
   /** true = has its own page on galernestudio.com */
   hasPage?: boolean;
+  /** true = a content site, not software (not counted as an app) */
+  content?: boolean;
 }
 
 const play = (id: string) => `https://play.google.com/store/apps/details?id=${id}`;
@@ -147,17 +149,34 @@ export const apps: AppEntry[] = [
     bg: '#1F5F4A',
     fg: '#F4F1EA',
     kinds: ['web'],
-    platform: { en: 'Web · French only', fr: 'Web' },
+    platform: { en: 'SaaS · French only', fr: 'SaaS' },
     desc: {
       en: 'Building breakdowns, tracked until they are fixed. Residents report a broken light, door or lift with a photo, and the property manager gets it by email.',
       fr: 'Les pannes de l’immeuble, suivies jusqu’à la réparation. Les résidents signalent une lumière, une porte ou un ascenseur en panne avec une photo, et la régie est prévenue par e-mail.',
     },
     website: same('https://gardien-app.duckdns.org'),
   },
+  {
+    slug: 'firefly',
+    name: 'The Little Firefly',
+    initial: 'F',
+    bg: '#D15400',
+    fg: '#FFFFFF',
+    kinds: ['web'],
+    platform: { en: 'Web · Guides', fr: 'Web · Guides' },
+    desc: {
+      en: 'Practical guides for people moving to the UK to study, work or live.',
+      fr: 'Des guides pratiques pour s’installer au Royaume-Uni pour étudier, travailler ou vivre.',
+    },
+    website: same('https://www.thelittlefirefly.co.uk'),
+    content: true,
+  },
 ];
 
+const software = apps.filter((a) => !a.content);
+
 export const counts = {
-  total: apps.length,
+  total: software.length,
   android: apps.filter((a) => a.kinds.includes('android')).length,
   windows: apps.filter((a) => a.kinds.includes('windows')).length,
 };

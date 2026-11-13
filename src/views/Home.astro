@@ -24,10 +24,10 @@ const jsonLd = [
     address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
     sameAs: [site.x],
     owns: apps.map((a) => ({
-      '@type': 'SoftwareApplication',
+      '@type': a.content ? 'WebSite' : 'SoftwareApplication',
       name: a.name,
       url: a.hasPage ? new URL(localePath(lang, `/apps/${a.slug}`), Astro.site).href : a.website?.[lang] ?? a.playUrl,
-      operatingSystem: a.kinds.map((k) => (k === 'android' ? 'Android' : 'Windows')).join(', '),
+      operatingSystem: a.content ? undefined : a.kinds.map((k) => (k === 'android' ? 'Android' : 'Windows')).join(', '),
       image: `https://galernestudio.com/icons/${a.slug}.webp`,
     })),
   },
@@ -109,17 +109,6 @@ const jsonLd = [
             </div>
           </article>
         ))}
-      </div>
-
-      <div class="also">
-        <div class="also-main">
-          <img class="app-icon" src="/icons/firefly.webp" alt="" width="56" height="56" loading="lazy" />
-          <div>
-            <span class="eyebrow">{s.also.eyebrow}</span>
-            <p class="muted" style="font-size:16px"><strong style="color:var(--ink)">The Little Firefly</strong>: {s.also.desc}</p>
-          </div>
-        </div>
-        <a class="link" href={site.firefly} style="font-size:14px">{s.also.visit}</a>
       </div>
     </div>
   </section>

@@ -84,10 +84,6 @@ p { margin: 0; }
 .card-links { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; font-size: 14px; }
 .app-icon { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; flex-shrink: 0; }
 
-.also { border-top: 1px solid var(--line); padding-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
-.also-main { display: flex; align-items: center; gap: 16px; flex: 1 1 420px; min-width: 0; }
-.also-main > div:last-child { display: flex; flex-direction: column; gap: 4px; }
-.also .eyebrow { font-size: 13px; }
 
 /* About */
 .about { padding-block: 96px; display: flex; flex-wrap: wrap; gap: 56px; }
