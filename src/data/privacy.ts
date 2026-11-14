@@ -126,13 +126,33 @@ export const policies: Record<string, Policy> = {
     },
   },
   'kotoba-ciphers': {
-    updated: '2026-10-25',
+    updated: '2026-11-14',
     sections: {
       en: [
         controller.en,
         {
           h: 'Gameplay data',
           p: ['Kotoba Ciphers has no account. Your progress, scores, best times, achievements and settings are stored only on your device. Puzzles work offline and we never receive your game data.'],
+        },
+        {
+          h: 'Puzzle server',
+          p: ['The app downloads new puzzles and the daily challenge from our server. Our server sees your IP address as part of the network connection. It appears only in short-lived technical logs, used for security and troubleshooting and automatically overwritten.'],
+        },
+        {
+          h: 'Notifications',
+          p: [
+            'If you allow notifications, the app sends our server a notification token created by Firebase Cloud Messaging (a Google service), together with your puzzle language, your platform (Android or iOS) and your time zone. The server also records when you last opened the app and when you last completed the daily challenge.',
+            'We use this only to send the daily challenge, streak reminders and occasional reminders to come back, at a sensible local time. The legal basis is your consent, which you can withdraw at any time by turning notifications off in your phone settings.',
+            'The token does not identify you by name. It is deleted from our server as soon as Firebase reports it is no longer valid, for example after you uninstall the app.',
+          ],
+        },
+        {
+          h: 'Service providers',
+          ul: [
+            'Oracle (Oracle Cloud Infrastructure): hosting of the Kotoba Ciphers server and database, in Marseille, France.',
+            'Google (Firebase Cloud Messaging): delivery of notifications.',
+            'Unity Technologies (LevelPlay) and its partner networks: advertising, see below.',
+          ],
         },
         ads.en,
         {
@@ -147,6 +167,26 @@ export const policies: Record<string, Policy> = {
         {
           h: 'Données de jeu',
           p: ['Kotoba Ciphers n’a pas de compte. Votre progression, vos scores, meilleurs temps, succès et réglages sont stockés uniquement sur votre appareil. Les énigmes fonctionnent hors ligne et nous ne recevons jamais vos données de jeu.'],
+        },
+        {
+          h: 'Serveur des énigmes',
+          p: ['L’application télécharge les nouvelles énigmes et le défi du jour depuis notre serveur. Notre serveur voit votre adresse IP du fait de la connexion réseau. Elle n’apparaît que dans des journaux techniques de courte durée, utilisés pour la sécurité et le dépannage et écrasés automatiquement.'],
+        },
+        {
+          h: 'Notifications',
+          p: [
+            'Si vous autorisez les notifications, l’application envoie à notre serveur un jeton de notification créé par Firebase Cloud Messaging (un service de Google), ainsi que la langue des énigmes, votre plateforme (Android ou iOS) et votre fuseau horaire. Le serveur enregistre aussi la date de votre dernière ouverture de l’application et celle de votre dernier défi du jour terminé.',
+            'Nous les utilisons uniquement pour vous envoyer le défi du jour, des rappels de série et, de temps en temps, une invitation à revenir, à une heure locale raisonnable. La base légale est votre consentement, que vous pouvez retirer à tout moment en désactivant les notifications dans les réglages de votre téléphone.',
+            'Le jeton ne vous identifie pas par votre nom. Il est supprimé de notre serveur dès que Firebase indique qu’il n’est plus valide, par exemple après la désinstallation de l’application.',
+          ],
+        },
+        {
+          h: 'Prestataires',
+          ul: [
+            'Oracle (Oracle Cloud Infrastructure) : hébergement du serveur et de la base de données de Kotoba Ciphers, à Marseille, en France.',
+            'Google (Firebase Cloud Messaging) : envoi des notifications.',
+            'Unity Technologies (LevelPlay) et ses régies partenaires : publicité, voir ci-dessous.',
+          ],
         },
         ads.fr,
         {
