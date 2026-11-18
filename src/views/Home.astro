@@ -165,10 +165,6 @@ const jsonLd = [
           <input type="email" name="email" required maxlength="200" autocomplete="email" />
         </label>
       </div>
-      <label class="field">
-        <span>{w.company}</span>
-        <input type="text" name="company" maxlength="160" autocomplete="organization" />
-      </label>
       <fieldset class="field">
         <legend>{w.type}</legend>
         <div class="chips">
@@ -177,15 +173,21 @@ const jsonLd = [
           ))}
         </div>
       </fieldset>
-      <label class="field">
-        <span>{w.timeline}</span>
-        <select name="timeline">
-          {w.timelines.map((b) => <option value={b}>{b}</option>)}
-        </select>
-      </label>
+      <div class="row">
+        <label class="field">
+          <span>{w.company}</span>
+          <input type="text" name="company" maxlength="160" autocomplete="organization" />
+        </label>
+        <label class="field">
+          <span>{w.timeline}</span>
+          <select name="timeline">
+            {w.timelines.map((b) => <option value={b}>{b}</option>)}
+          </select>
+        </label>
+      </div>
       <label class="field">
         <span>{w.message}</span>
-        <textarea name="message" rows="6" required minlength="20" maxlength="5000" placeholder={w.messageHint}></textarea>
+        <textarea name="message" rows="4" required minlength="20" maxlength="5000" placeholder={w.messageHint}></textarea>
       </label>
       {site.turnstileSiteKey && (
         <>
@@ -193,9 +195,9 @@ const jsonLd = [
           <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
         </>
       )}
-      <p class="form-note">{w.consent}</p>
       <div class="form-actions">
         <button class="btn btn-strong" type="submit" data-sending={w.sending}>{w.send}</button>
+        <p class="form-note">{w.consent}</p>
         <p class="form-status" role="status" aria-live="polite" hidden></p>
       </div>
       <p class="form-error" role="alert" hidden>{w.error} <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
