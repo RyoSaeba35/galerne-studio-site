@@ -111,6 +111,14 @@ const ogUrl = new URL(ogImage, Astro.site).href;
   </footer>
 
   <script is:inline>
+    // Keep --header-h in sync with the sticky header, for full-height sections and anchor offsets.
+    (function () {
+      var bar = document.querySelector('.masthead');
+      var set = function () { document.documentElement.style.setProperty('--header-h', bar.offsetHeight + 'px'); };
+      set();
+      if (window.ResizeObserver) new ResizeObserver(set).observe(bar);
+    })();
+
     // Theme toggle
     (function () {
       var btn = document.querySelector('.theme-toggle');

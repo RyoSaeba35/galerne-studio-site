@@ -37,6 +37,7 @@
   --t-hero: clamp(40px, min(7.2vw, 10.5vh), 96px);
   --wrap: 1200px;
   --gutter: clamp(20px, 4vw, 40px);
+  --header-h: 75px; /* updated from the real header height by Base.astro */
 }
 
 :root[data-theme="dark"] {
@@ -81,7 +82,8 @@ ul { margin: 0; }
 .skip:focus { left: 16px; }
 
 /* ---------- Header ---------- */
-.masthead { background: var(--bg); border-bottom: 1px solid var(--rule); }
+.masthead { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--rule); }
+[id] { scroll-margin-top: var(--header-h); }
 .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 18px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 750; font-stretch: 120%; font-size: 19px; letter-spacing: -0.01em; }
 .brand img { border-radius: 9px; }
@@ -98,7 +100,10 @@ ul { margin: 0; }
 .nav .lang:hover, .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
 .theme-toggle .moon, :root[data-theme="dark"] .theme-toggle .sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .moon { display: block; }
-@media (max-width: 600px) { .nav { gap: 4px 16px; font-size: 14px; } }
+@media (max-width: 640px) {
+  .header { flex-wrap: nowrap; padding-block: 12px; }
+  .nav > a:not(.lang) { display: none; } /* sections stay reachable by scrolling and the hero buttons */
+}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -120,8 +125,10 @@ ul { margin: 0; }
 .kicker { color: var(--accent); font-size: var(--t-base); font-weight: 650; }
 
 /* ---------- Home hero ---------- */
-.hero { background: var(--bg); }
-.hero-stage { position: relative; isolation: isolate; overflow: hidden; }
+/* Hero + strip fill the screen under the sticky header */
+.hero { background: var(--bg); min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h)); display: flex; flex-direction: column; }
+.hero-stage { position: relative; isolation: isolate; overflow: hidden; flex: 1; display: flex; align-items: center; }
+.hero-stage > .hero-inner { width: 100%; }
 .hero-inner { position: relative; padding-block: clamp(36px, min(9vw, 8vh), 120px) clamp(40px, min(9vw, 8vh), 112px); display: flex; flex-direction: column; gap: clamp(16px, 3vh, 28px); }
 .hero h1 { font-size: var(--t-hero); font-weight: 800; font-stretch: 125%; letter-spacing: -0.035em; line-height: 0.98; max-width: 13ch; }
 .hero .lead { font-size: var(--t-md); line-height: 1.6; color: var(--text-2); max-width: 52ch; }
@@ -213,7 +220,8 @@ ul { margin: 0; }
 .compass .hub { fill: var(--bg-alt); stroke: currentColor; stroke-width: 1.5; }
 
 /* ---------- Work with us ---------- */
-#work { padding-block: clamp(32px, 7vh, 112px); scroll-margin-top: 0; }
+/* Work with us fills the screen under the sticky header when you jump to it */
+#work { padding-block: clamp(24px, 5vh, 72px); min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h)); align-content: center; }
 .work { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px 72px; align-items: start; }
 @media (max-width: 900px) { .work { grid-template-columns: 1fr; } }
 .work-text { display: flex; flex-direction: column; gap: 18px; }
