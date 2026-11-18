@@ -41,10 +41,16 @@ const ogUrl = new URL(ogImage, Astro.site).href;
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0E1C2F" media="(prefers-color-scheme: dark)" />
   <script is:inline>
-    // Light by default; remember the visitor's choice.
-    try { if (localStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+    // Follow the device setting, unless the visitor picked a theme with the toggle.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.dataset.theme = 'dark';
+    })();
   </script>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={site.name} />
@@ -109,13 +115,21 @@ const ogUrl = new URL(ogImage, Astro.site).href;
     (function () {
       var btn = document.querySelector('.theme-toggle');
       var root = document.documentElement;
-      var meta = document.querySelector('meta[name="theme-color"]');
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
       function sync() {
         var dark = root.dataset.theme === 'dark';
         btn.setAttribute('aria-label', dark ? btn.dataset.toLight : btn.dataset.toDark);
         btn.setAttribute('aria-pressed', String(dark));
-        if (meta) meta.content = dark ? '#0E1C2F' : '#FFFFFF';
+        metas.forEach(function (m) { m.content = dark ? '#0E1C2F' : '#FFFFFF'; });
       }
+      // While no choice is saved, follow the device if it switches (e.g. night mode at sunset).
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (err) {}
+        if (saved) return;
+        if (e.matches) root.dataset.theme = 'dark'; else delete root.dataset.theme;
+        sync();
+      });
       btn.addEventListener('click', function () {
         if (root.dataset.theme === 'dark') delete root.dataset.theme; else root.dataset.theme = 'dark';
         try { localStorage.setItem('theme', root.dataset.theme === 'dark' ? 'dark' : 'light'); } catch (e) {}
