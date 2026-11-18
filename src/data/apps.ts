@@ -172,6 +172,9 @@ export const apps: AppEntry[] = [
   },
 ];
 
+/** Flagship apps, shown first and in the home page strip */
+export const featured = ['vulcainvpn', 'sideby', 'duplicate-finder', 'souffle'];
+
 const software = apps.filter((a) => !a.content);
 
 export const counts = {

@@ -37,42 +37,41 @@ const jsonLd = [
 ];
 ---
 <Base lang={lang} path={`/apps/${slug}`} title={app.name} description={page.tagline[lang]} jsonLd={jsonLd} ogImage={page.ogImage}>
-  <nav class="container crumbs" aria-label="Breadcrumb">
-    <a href={`${localePath(lang, '/')}#apps`}>{s.appPage.breadcrumb}</a> / <span aria-current="page">{app.name}</span>
-  </nav>
-
-  <section class="container app-hero">
-    <div class="app-hero-text">
-      <img class="app-icon app-icon-lg" src={`/icons/${slug}.webp`} alt="" width="88" height="88" />
-      <h1>{app.name}</h1>
-      <p class="lead" style="font-size:21px;line-height:1.5">{page.tagline[lang]}</p>
-      <div class="actions" style="align-items:center">
-        {app.playUrl && <a class="btn btn-dark" href={app.playUrl}>{s.appPage.getPlay}</a>}
-        <span class="app-meta">{page.meta[lang]}</span>
+  <section class="app-hero" style={`--app-bg:${app.bg};--app-fg:${app.fg}`}>
+    <div class="container app-hero-inner">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={`${localePath(lang, '/')}#apps`}>{s.appPage.breadcrumb}</a> / <span aria-current="page">{app.name}</span>
+      </nav>
+      <div class="app-hero-text">
+        <img class="app-icon app-icon-lg" src={`/icons/${slug}.webp`} alt="" width="88" height="88" />
+        <h1>{app.name}</h1>
+        <p class="lead">{page.tagline[lang]}</p>
+        <div class="actions" style="align-items:center;gap:16px 20px">
+          {app.playUrl && <a class="btn btn-store" href={app.playUrl}><Icon name="play" size={16} />{s.appPage.getPlay}</a>}
+          <span class="app-meta">{page.meta[lang]}</span>
+        </div>
       </div>
-    </div>
-    <div class="shots">
-      {page.screenshots.length > 0
-        ? page.screenshots.slice(0, 2).map((src, i) => (
-            <div class="shot"><img src={src} alt={`${app.name} screenshot ${i + 1}`} width="164" height="356" loading="lazy" /></div>
-          ))
-        : <img class="shot-placeholder" src={`/icons/${slug}-640.webp`} alt={`${app.name} icon`} width="320" height="320" />}
+      <div class="shots">
+        {page.screenshots.length > 0
+          ? page.screenshots.slice(0, 2).map((src, i) => (
+              <div class="shot"><img src={src} alt={`${app.name} screenshot ${i + 1}`} width="164" height="356" loading="lazy" /></div>
+            ))
+          : <img class="shot-placeholder" src={`/icons/${slug}-640.webp`} alt={`${app.name} icon`} width="300" height="300" />}
+      </div>
     </div>
   </section>
 
-  <section class="band">
-    <div class="container section">
-      <h2 class="h2">{s.appPage.what}</h2>
-      <div class="features">
-        {page.features.map((f) => (
-          <div class="feature">
-            <Icon name={f.icon} />
-            <h3>{f.title[lang]}</h3>
-            <p>{f.body[lang]}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+  <section class="container section">
+    <h2 class="h2" style="margin-bottom:40px">{s.appPage.what}</h2>
+    <ul class="features">
+      {page.features.map((f) => (
+        <li class="feature">
+          <Icon name={f.icon} size={26} />
+          <h3>{f.title[lang]}</h3>
+          <p>{f.body[lang]}</p>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <section class="container info">

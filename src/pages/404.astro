@@ -5,8 +5,8 @@ const s = t.en.notFound;
 const f = t.fr.notFound;
 ---
 <Base lang="en" path="/404" title={s.title}>
+  <header class="page-head"><div class="container"><h1>{s.title}</h1></div></header>
   <article class="container prose">
-    <h1>{s.title}</h1>
     <p>{s.body} <a href="/">{s.back}</a></p>
     <p lang="fr">{f.body} <a href="/fr">{f.back}</a></p>
   </article>

@@ -9,8 +9,10 @@ const s = t[lang];
 const fr = lang === 'fr';
 ---
 <Base lang={lang} path="/legal" title={s.legal.title}>
-  <article class="container prose">
+  <header class="page-head"><div class="container">
     <h1>{s.legal.title}</h1>
+  </div></header>
+  <article class="container prose">
 
     <h2>{fr ? 'Éditeur du site' : 'Publisher'}</h2>
     <dl>

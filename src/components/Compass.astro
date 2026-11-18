@@ -1,0 +1,106 @@
+---
+// Compass rose: 8 main points, 8 minor points and a 5-degree ring.
+// The northwest point, where the galerne blows from, is in the brand mint.
+interface Props { lang: 'en' | 'fr' }
+const { lang } = Astro.props;
+const w = lang === 'fr' ? 'O' : 'W';
+const nw = lang === 'fr' ? 'NO' : 'NW';
+---
+<svg class="compass" viewBox="-86 -86 172 172" aria-hidden="true" focusable="false">
+  <circle class="ring" r="70" stroke-width="1.6" />
+  <circle class="ring" r="60" stroke-width=".8" />
+  <line class="tick" x1="0.00" y1="-60.00" x2="0.00" y2="-69.00" stroke-width="1.6" />
+  <line class="tick" x1="5.23" y1="-59.77" x2="5.49" y2="-62.76" stroke-width="0.7" />
+  <line class="tick" x1="10.42" y1="-59.09" x2="10.94" y2="-62.04" stroke-width="0.7" />
+  <line class="tick" x1="15.53" y1="-57.96" x2="16.31" y2="-60.85" stroke-width="0.7" />
+  <line class="tick" x1="20.52" y1="-56.38" x2="21.55" y2="-59.20" stroke-width="0.7" />
+  <line class="tick" x1="25.36" y1="-54.38" x2="26.62" y2="-57.10" stroke-width="0.7" />
+  <line class="tick" x1="30.00" y1="-51.96" x2="33.00" y2="-57.16" stroke-width="1.1" />
+  <line class="tick" x1="34.41" y1="-49.15" x2="36.14" y2="-51.61" stroke-width="0.7" />
+  <line class="tick" x1="38.57" y1="-45.96" x2="40.50" y2="-48.26" stroke-width="0.7" />
+  <line class="tick" x1="42.43" y1="-42.43" x2="44.55" y2="-44.55" stroke-width="0.7" />
+  <line class="tick" x1="45.96" y1="-38.57" x2="48.26" y2="-40.50" stroke-width="0.7" />
+  <line class="tick" x1="49.15" y1="-34.41" x2="51.61" y2="-36.14" stroke-width="0.7" />
+  <line class="tick" x1="51.96" y1="-30.00" x2="57.16" y2="-33.00" stroke-width="1.1" />
+  <line class="tick" x1="54.38" y1="-25.36" x2="57.10" y2="-26.62" stroke-width="0.7" />
+  <line class="tick" x1="56.38" y1="-20.52" x2="59.20" y2="-21.55" stroke-width="0.7" />
+  <line class="tick" x1="57.96" y1="-15.53" x2="60.85" y2="-16.31" stroke-width="0.7" />
+  <line class="tick" x1="59.09" y1="-10.42" x2="62.04" y2="-10.94" stroke-width="0.7" />
+  <line class="tick" x1="59.77" y1="-5.23" x2="62.76" y2="-5.49" stroke-width="0.7" />
+  <line class="tick" x1="60.00" y1="-0.00" x2="69.00" y2="-0.00" stroke-width="1.6" />
+  <line class="tick" x1="59.77" y1="5.23" x2="62.76" y2="5.49" stroke-width="0.7" />
+  <line class="tick" x1="59.09" y1="10.42" x2="62.04" y2="10.94" stroke-width="0.7" />
+  <line class="tick" x1="57.96" y1="15.53" x2="60.85" y2="16.31" stroke-width="0.7" />
+  <line class="tick" x1="56.38" y1="20.52" x2="59.20" y2="21.55" stroke-width="0.7" />
+  <line class="tick" x1="54.38" y1="25.36" x2="57.10" y2="26.62" stroke-width="0.7" />
+  <line class="tick" x1="51.96" y1="30.00" x2="57.16" y2="33.00" stroke-width="1.1" />
+  <line class="tick" x1="49.15" y1="34.41" x2="51.61" y2="36.14" stroke-width="0.7" />
+  <line class="tick" x1="45.96" y1="38.57" x2="48.26" y2="40.50" stroke-width="0.7" />
+  <line class="tick" x1="42.43" y1="42.43" x2="44.55" y2="44.55" stroke-width="0.7" />
+  <line class="tick" x1="38.57" y1="45.96" x2="40.50" y2="48.26" stroke-width="0.7" />
+  <line class="tick" x1="34.41" y1="49.15" x2="36.14" y2="51.61" stroke-width="0.7" />
+  <line class="tick" x1="30.00" y1="51.96" x2="33.00" y2="57.16" stroke-width="1.1" />
+  <line class="tick" x1="25.36" y1="54.38" x2="26.62" y2="57.10" stroke-width="0.7" />
+  <line class="tick" x1="20.52" y1="56.38" x2="21.55" y2="59.20" stroke-width="0.7" />
+  <line class="tick" x1="15.53" y1="57.96" x2="16.31" y2="60.85" stroke-width="0.7" />
+  <line class="tick" x1="10.42" y1="59.09" x2="10.94" y2="62.04" stroke-width="0.7" />
+  <line class="tick" x1="5.23" y1="59.77" x2="5.49" y2="62.76" stroke-width="0.7" />
+  <line class="tick" x1="0.00" y1="60.00" x2="0.00" y2="69.00" stroke-width="1.6" />
+  <line class="tick" x1="-5.23" y1="59.77" x2="-5.49" y2="62.76" stroke-width="0.7" />
+  <line class="tick" x1="-10.42" y1="59.09" x2="-10.94" y2="62.04" stroke-width="0.7" />
+  <line class="tick" x1="-15.53" y1="57.96" x2="-16.31" y2="60.85" stroke-width="0.7" />
+  <line class="tick" x1="-20.52" y1="56.38" x2="-21.55" y2="59.20" stroke-width="0.7" />
+  <line class="tick" x1="-25.36" y1="54.38" x2="-26.62" y2="57.10" stroke-width="0.7" />
+  <line class="tick" x1="-30.00" y1="51.96" x2="-33.00" y2="57.16" stroke-width="1.1" />
+  <line class="tick" x1="-34.41" y1="49.15" x2="-36.14" y2="51.61" stroke-width="0.7" />
+  <line class="tick" x1="-38.57" y1="45.96" x2="-40.50" y2="48.26" stroke-width="0.7" />
+  <line class="tick" x1="-42.43" y1="42.43" x2="-44.55" y2="44.55" stroke-width="0.7" />
+  <line class="tick" x1="-45.96" y1="38.57" x2="-48.26" y2="40.50" stroke-width="0.7" />
+  <line class="tick" x1="-49.15" y1="34.41" x2="-51.61" y2="36.14" stroke-width="0.7" />
+  <line class="tick" x1="-51.96" y1="30.00" x2="-57.16" y2="33.00" stroke-width="1.1" />
+  <line class="tick" x1="-54.38" y1="25.36" x2="-57.10" y2="26.62" stroke-width="0.7" />
+  <line class="tick" x1="-56.38" y1="20.52" x2="-59.20" y2="21.55" stroke-width="0.7" />
+  <line class="tick" x1="-57.96" y1="15.53" x2="-60.85" y2="16.31" stroke-width="0.7" />
+  <line class="tick" x1="-59.09" y1="10.42" x2="-62.04" y2="10.94" stroke-width="0.7" />
+  <line class="tick" x1="-59.77" y1="5.23" x2="-62.76" y2="5.49" stroke-width="0.7" />
+  <line class="tick" x1="-60.00" y1="0.00" x2="-69.00" y2="0.00" stroke-width="1.6" />
+  <line class="tick" x1="-59.77" y1="-5.23" x2="-62.76" y2="-5.49" stroke-width="0.7" />
+  <line class="tick" x1="-59.09" y1="-10.42" x2="-62.04" y2="-10.94" stroke-width="0.7" />
+  <line class="tick" x1="-57.96" y1="-15.53" x2="-60.85" y2="-16.31" stroke-width="0.7" />
+  <line class="tick" x1="-56.38" y1="-20.52" x2="-59.20" y2="-21.55" stroke-width="0.7" />
+  <line class="tick" x1="-54.38" y1="-25.36" x2="-57.10" y2="-26.62" stroke-width="0.7" />
+  <line class="tick" x1="-51.96" y1="-30.00" x2="-57.16" y2="-33.00" stroke-width="1.1" />
+  <line class="tick" x1="-49.15" y1="-34.41" x2="-51.61" y2="-36.14" stroke-width="0.7" />
+  <line class="tick" x1="-45.96" y1="-38.57" x2="-48.26" y2="-40.50" stroke-width="0.7" />
+  <line class="tick" x1="-42.43" y1="-42.43" x2="-44.55" y2="-44.55" stroke-width="0.7" />
+  <line class="tick" x1="-38.57" y1="-45.96" x2="-40.50" y2="-48.26" stroke-width="0.7" />
+  <line class="tick" x1="-34.41" y1="-49.15" x2="-36.14" y2="-51.61" stroke-width="0.7" />
+  <line class="tick" x1="-30.00" y1="-51.96" x2="-33.00" y2="-57.16" stroke-width="1.1" />
+  <line class="tick" x1="-25.36" y1="-54.38" x2="-26.62" y2="-57.10" stroke-width="0.7" />
+  <line class="tick" x1="-20.52" y1="-56.38" x2="-21.55" y2="-59.20" stroke-width="0.7" />
+  <line class="tick" x1="-15.53" y1="-57.96" x2="-16.31" y2="-60.85" stroke-width="0.7" />
+  <line class="tick" x1="-10.42" y1="-59.09" x2="-10.94" y2="-62.04" stroke-width="0.7" />
+  <line class="tick" x1="-5.23" y1="-59.77" x2="-5.49" y2="-62.76" stroke-width="0.7" />
+  <path class="pt-light" d="M0,0 L0.00,-5.00 L9.18,-22.17 Z" /><path class="pt-dark" d="M0,0 L9.18,-22.17 L3.54,-3.54 Z" />
+  <path class="pt-light" d="M0,0 L3.54,-3.54 L22.17,-9.18 Z" /><path class="pt-dark" d="M0,0 L22.17,-9.18 L5.00,-0.00 Z" />
+  <path class="pt-light" d="M0,0 L5.00,-0.00 L22.17,9.18 Z" /><path class="pt-dark" d="M0,0 L22.17,9.18 L3.54,3.54 Z" />
+  <path class="pt-light" d="M0,0 L3.54,3.54 L9.18,22.17 Z" /><path class="pt-dark" d="M0,0 L9.18,22.17 L0.00,5.00 Z" />
+  <path class="pt-light" d="M0,0 L0.00,5.00 L-9.18,22.17 Z" /><path class="pt-dark" d="M0,0 L-9.18,22.17 L-3.54,3.54 Z" />
+  <path class="pt-light" d="M0,0 L-3.54,3.54 L-22.17,9.18 Z" /><path class="pt-dark" d="M0,0 L-22.17,9.18 L-5.00,0.00 Z" />
+  <path class="pt-light" d="M0,0 L-5.00,0.00 L-22.17,-9.18 Z" /><path class="pt-dark" d="M0,0 L-22.17,-9.18 L-3.54,-3.54 Z" />
+  <path class="pt-light" d="M0,0 L-3.54,-3.54 L-9.18,-22.17 Z" /><path class="pt-dark" d="M0,0 L-9.18,-22.17 L-0.00,-5.00 Z" />
+  <path class="pt-light" d="M0,0 L3.06,-7.39 L24.04,-24.04 Z" /><path class="pt-dark" d="M0,0 L24.04,-24.04 L7.39,-3.06 Z" />
+  <path class="pt-light" d="M0,0 L7.39,3.06 L24.04,24.04 Z" /><path class="pt-dark" d="M0,0 L24.04,24.04 L3.06,7.39 Z" />
+  <path class="pt-light" d="M0,0 L-3.06,7.39 L-24.04,24.04 Z" /><path class="pt-dark" d="M0,0 L-24.04,24.04 L-7.39,3.06 Z" />
+  <path class="pt-wind" d="M0,0 L-8.31,-3.44 L-26.87,-26.87 Z" /><path class="pt-wind-2" d="M0,0 L-26.87,-26.87 L-3.44,-8.31 Z" />
+  <path class="pt-light" d="M0,0 L-4.21,-10.16 L0.00,-52.00 Z" /><path class="pt-dark" d="M0,0 L0.00,-52.00 L4.21,-10.16 Z" />
+  <path class="pt-light" d="M0,0 L10.16,-4.21 L52.00,-0.00 Z" /><path class="pt-dark" d="M0,0 L52.00,-0.00 L10.16,4.21 Z" />
+  <path class="pt-light" d="M0,0 L4.21,10.16 L0.00,52.00 Z" /><path class="pt-dark" d="M0,0 L0.00,52.00 L-4.21,10.16 Z" />
+  <path class="pt-light" d="M0,0 L-10.16,4.21 L-52.00,0.00 Z" /><path class="pt-dark" d="M0,0 L-52.00,0.00 L-10.16,-4.21 Z" />
+  <circle class="hub" r="3" />
+  <text x="0.00" y="-78.00">N</text>
+  <text x="78.00" y="-0.00">E</text>
+  <text x="0.00" y="78.00">S</text>
+  <text x="-78.00" y="0.00">{w}</text>
+  <text class="nw" x="-55.86" y="-55.86">{nw}</text>
+</svg>

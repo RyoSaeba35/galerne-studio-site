@@ -23,9 +23,10 @@ export function localePath(lang: Lang, path: string): string {
 export const t = {
   en: {
     metaDesc: 'Galerne Studio is an independent software studio in Lyon, France, building focused apps for Android and Windows.',
-    nav: { apps: 'Apps', about: 'About', work: 'Work with us', contact: 'Contact', switchLabel: 'Version française', switchText: 'FR' },
+    nav: { apps: 'Apps', about: 'About', work: 'Work with us', contact: 'Contact', switchLabel: 'Version française', switchText: 'FR', toDark: 'Switch to dark theme', toLight: 'Switch to light theme' },
     hero: {
-      eyebrow: 'Independent software studio · Lyon, France',
+      eyebrow: 'Independent software studio in Lyon, France',
+      shelf: 'Popular apps',
       title: 'Small apps that do one thing well.',
       sub: 'Galerne Studio builds focused, privacy-minded apps for Android and Windows. No bloat, no dark patterns, just tools that work.',
       cta1: 'Browse the apps',
@@ -34,7 +35,7 @@ export const t = {
     },
     apps: {
       title: 'Our apps',
-      sub: 'Everything we’ve shipped, on mobile and desktop.',
+      sub: (n: number, a: number, w: number) => `${n} apps we build and maintain ourselves: ${a} on Android, ${w} on Windows, the rest on the web.`,
       filters: { all: 'All', android: 'Android', windows: 'Windows', web: 'Web' },
       filterLabel: 'Filter apps by platform',
       details: 'Details',
@@ -42,6 +43,8 @@ export const t = {
       play: 'Google Play',
       msStore: 'Microsoft Store',
       opensIn: (name: string) => `${name} website`,
+      showAll: (n: number) => `Show ${n} more`,
+      showLess: 'Show fewer',
     },
     about: {
       title: 'Named after a wind.',
@@ -103,9 +106,10 @@ export const t = {
   },
   fr: {
     metaDesc: 'Galerne Studio est un studio de logiciels indépendant basé à Lyon, qui crée des applications simples et efficaces pour Android et Windows.',
-    nav: { apps: 'Applications', about: 'À propos', work: 'Travailler avec nous', contact: 'Contact', switchLabel: 'English version', switchText: 'EN' },
+    nav: { apps: 'Applications', about: 'À propos', work: 'Travailler avec nous', contact: 'Contact', switchLabel: 'English version', switchText: 'EN', toDark: 'Passer au thème sombre', toLight: 'Passer au thème clair' },
     hero: {
-      eyebrow: 'Studio de logiciels indépendant · Lyon, France',
+      eyebrow: 'Studio de logiciels indépendant à Lyon',
+      shelf: 'Applis phares',
       title: 'Des petites applis qui font une chose, et bien.',
       sub: 'Galerne Studio crée des applications simples et respectueuses de la vie privée pour Android et Windows. Sans superflu, sans pièges, juste des outils qui marchent.',
       cta1: 'Voir les applications',
@@ -114,7 +118,7 @@ export const t = {
     },
     apps: {
       title: 'Nos applications',
-      sub: 'Tout ce que nous avons publié, sur mobile et sur ordinateur.',
+      sub: (n: number, a: number, w: number) => `${n} applications que nous développons et maintenons nous-mêmes : ${a} sur Android, ${w} sur Windows, les autres sur le web.`,
       filters: { all: 'Toutes', android: 'Android', windows: 'Windows', web: 'Web' },
       filterLabel: 'Filtrer les applications par plateforme',
       details: 'Détails',
@@ -122,6 +126,8 @@ export const t = {
       play: 'Google Play',
       msStore: 'Microsoft Store',
       opensIn: (name: string) => `Site web de ${name}`,
+      showAll: (n: number) => `Afficher ${n} de plus`,
+      showLess: 'Afficher moins',
     },
     about: {
       title: 'Le nom d’un vent.',
