@@ -93,5 +93,15 @@ const ogUrl = new URL(ogImage, Astro.site).href;
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    // Open every link that leaves galernestudio.com in a new tab.
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if ((a.protocol === 'http:' || a.protocol === 'https:') && a.host !== location.host) {
+        a.target = '_blank';
+        a.rel = (a.rel ? a.rel + ' ' : '') + 'noopener noreferrer';
+      }
+    });
+  </script>
 </body>
 </html>

@@ -123,8 +123,7 @@ export const apps: AppEntry[] = [
       en: 'Speak in any app, get clean, ready-to-send text. Voice dictation that removes the ums and fixes the punctuation.',
       fr: 'Parlez dans n’importe quelle appli, obtenez un texte propre, prêt à envoyer. La dictée vocale qui enlève les « euh » et corrige la ponctuation.',
     },
-    // Uncomment once Souffle is public on Google Play (the link 404s during the closed test):
-    // playUrl: play('com.galernestudio.souffle'),
+    playUrl: play('com.galernestudio.souffle'),
     hasPage: true,
   },
   {
