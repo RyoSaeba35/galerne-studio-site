@@ -110,7 +110,7 @@ export const t = {
     hero: {
       eyebrow: 'Studio de logiciels indépendant à Lyon',
       shelf: 'Applis phares',
-      title: 'Des petites applis qui font une chose, et bien.',
+      title: 'Des applis qui vont à l’essentiel.',
       sub: 'Galerne Studio crée des applications simples et respectueuses de la vie privée pour Android et Windows. Sans superflu, sans pièges, juste des outils qui marchent.',
       cta1: 'Voir les applications',
       cta2: 'Nous contacter',
