@@ -568,4 +568,215 @@ export const policies: Record<string, Policy> = {
       ],
     },
   },
+  plume: {
+    updated: '2026-11-24',
+    sections: {
+      en: [
+        controller.en,
+        {
+          h: 'In short',
+          ul: [
+            'Plume (called Kikitori in Japanese, Korean and Chinese) transcribes audio entirely on your phone. Your recordings and transcripts are never sent to us or to anyone else.',
+            'No account, no server of ours, no ads, no analytics, no tracking.',
+            'The internet is used only to download the speech models and to buy Plume Pro through Google Play.',
+            'Uninstalling the app deletes everything it stored.',
+          ],
+        },
+        {
+          h: 'Your recordings and transcripts stay on your phone',
+          p: [
+            'When you record or import an audio or video file, Plume converts it into an audio file in the app’s private storage on your phone and transcribes it there, with a speech recognition model that runs on the device. The audio file, the transcript, its title and any edits you make are stored only in that private storage. Other apps cannot read it, and we never receive it.',
+            'When you import a file, Plume reads only the file you picked in Android’s file picker or shared to the app. It does not browse your other files.',
+            'Your settings (app language, theme, chosen model, spoken language) are also stored only on your phone.',
+          ],
+        },
+        {
+          h: 'When files leave the app',
+          p: ['A file leaves Plume only when you ask for it:'],
+          ul: [
+            'Export or share: the transcript file (TXT, SRT, VTT or DOCX) is handed to the app you choose in Android’s share menu, under that app’s own privacy policy.',
+            'Save recording: the audio file is copied to your phone’s Downloads folder.',
+            'Copy text: the transcript is placed on your phone’s clipboard.',
+          ],
+        },
+        {
+          h: 'Permissions',
+          ul: [
+            'Microphone: used only on the Record screen, while you are recording. A notification shows that Plume is recording.',
+            'Notifications and foreground service: to show the progress of a transcription or recording and let it continue while the screen is off. The app also keeps the processor awake during this time.',
+            'Internet: to download speech models and for Google Play purchases.',
+          ],
+        },
+        {
+          h: 'Speech model downloads',
+          p: [
+            'The speech recognition models are downloaded once, when you choose them, from Hugging Face (huggingface.co) and GitHub (github.com). As with any download, these services see your IP address and technical details sent by the phone (user agent). The app sends them nothing else: no recording, no transcript, no identifier.',
+          ],
+        },
+        {
+          h: 'Plume Pro and payments',
+          p: [
+            'Plume Pro is sold as a monthly or yearly subscription, or as a one-time lifetime purchase, through Google Play, which handles the payment. The app asks Google Play on your phone whether you own Pro; we run no server for this. We never see your payment details.',
+            'For accounting, Google Play gives us an order record for each purchase (order number, product, date, price, country). We do not receive your name or email address from it. Google’s privacy policy applies to the payment: policies.google.com/privacy.',
+          ],
+        },
+        {
+          h: 'Feedback and support',
+          p: [
+            'If you write to contact@galernestudio.com, for example with the “Send feedback” button, we receive your email address and your message. We use them only to answer you.',
+          ],
+        },
+        {
+          h: 'Who processes your data',
+          p: ['We do not sell or share your data. Apart from you, only these parties can see anything:'],
+          ul: [
+            'Google (Google Play): installation, updates and payments, under Google’s privacy policy.',
+            'Hugging Face, Inc. and GitHub, Inc. (United States): they see your IP address when the app downloads a speech model.',
+            'Our email provider: messages you send to contact@galernestudio.com.',
+          ],
+        },
+        {
+          h: 'Transfers outside the EU',
+          p: [
+            'Google, Hugging Face and GitHub may process IP addresses and order records in the United States. These transfers rely on the European Commission’s standard contractual clauses and, where the provider is certified, on the EU-U.S. Data Privacy Framework.',
+          ],
+        },
+        {
+          h: 'Why we process your data (legal bases)',
+          ul: [
+            'Downloading models, providing Pro and answering your messages: performance of our contract with you, or steps you asked us to take.',
+            'Keeping order records: legal obligation (French accounting rules).',
+          ],
+        },
+        {
+          h: 'How long we keep it',
+          ul: [
+            'Recordings, transcripts and settings: on your phone only, until you delete them or uninstall the app. We have no copy.',
+            'Order records: 10 years, as required by French accounting law.',
+            'Support emails: up to 3 years after our last exchange.',
+          ],
+        },
+        {
+          h: 'Delete your data',
+          id: 'delete-data',
+          p: ['Plume has no account, so there is nothing to close.'],
+          ul: [
+            'Delete a transcript and its audio from the transcript screen (menu > Delete).',
+            'Delete everything: uninstall Plume, or go to Android Settings > Apps > Plume > Storage > Clear data. It is deleted immediately and we keep no copy.',
+            'Files you exported or saved to Downloads are outside the app: delete them in your Files app.',
+            'Support emails: ask us at contact@galernestudio.com and we will delete them.',
+          ],
+        },
+        {
+          h: 'Children',
+          p: ['Plume is not directed at children under 13.'],
+        },
+        rights.en,
+        changes.en,
+      ],
+      fr: [
+        controller.fr,
+        {
+          h: 'En bref',
+          ul: [
+            'Plume (appelée Kikitori en japonais, coréen et chinois) transcrit l’audio entièrement sur votre téléphone. Vos enregistrements et transcriptions ne sont jamais envoyés, ni à nous ni à personne.',
+            'Pas de compte, pas de serveur chez nous, pas de publicité, pas de statistiques d’usage, pas de pistage.',
+            'Internet sert uniquement à télécharger les modèles de reconnaissance vocale et à acheter Plume Pro via Google Play.',
+            'Désinstaller l’application supprime tout ce qu’elle a enregistré.',
+          ],
+        },
+        {
+          h: 'Vos enregistrements et transcriptions restent sur votre téléphone',
+          p: [
+            'Quand vous enregistrez ou importez un fichier audio ou vidéo, Plume le convertit en fichier audio dans le stockage privé de l’application, sur votre téléphone, et le transcrit sur place avec un modèle de reconnaissance vocale qui fonctionne sur l’appareil. Le fichier audio, la transcription, son titre et vos modifications sont enregistrés uniquement dans ce stockage privé. Les autres applications ne peuvent pas y accéder et nous ne les recevons jamais.',
+            'Quand vous importez un fichier, Plume lit uniquement le fichier choisi dans le sélecteur de fichiers d’Android ou partagé vers l’application. Elle ne parcourt pas vos autres fichiers.',
+            'Vos réglages (langue de l’application, thème, modèle choisi, langue parlée) sont eux aussi enregistrés uniquement sur votre téléphone.',
+          ],
+        },
+        {
+          h: 'Quand des fichiers sortent de l’application',
+          p: ['Un fichier ne sort de Plume que si vous le demandez :'],
+          ul: [
+            'Exporter ou partager : le fichier de transcription (TXT, SRT, VTT ou DOCX) est transmis à l’application que vous choisissez dans le menu de partage d’Android, selon sa propre politique de confidentialité.',
+            'Sauvegarder l’enregistrement : le fichier audio est copié dans le dossier Téléchargements de votre téléphone.',
+            'Copier le texte : la transcription est placée dans le presse-papiers de votre téléphone.',
+          ],
+        },
+        {
+          h: 'Autorisations',
+          ul: [
+            'Micro : utilisé uniquement sur l’écran Enregistrer, pendant l’enregistrement. Une notification indique que Plume enregistre.',
+            'Notifications et service de premier plan : pour afficher la progression d’une transcription ou d’un enregistrement et lui permettre de continuer écran éteint. L’application maintient aussi le processeur actif pendant ce temps.',
+            'Internet : pour télécharger les modèles de reconnaissance vocale et pour les achats Google Play.',
+          ],
+        },
+        {
+          h: 'Téléchargement des modèles',
+          p: [
+            'Les modèles de reconnaissance vocale sont téléchargés une seule fois, quand vous les choisissez, depuis Hugging Face (huggingface.co) et GitHub (github.com). Comme pour tout téléchargement, ces services voient votre adresse IP et les informations techniques envoyées par le téléphone (user agent). L’application ne leur envoie rien d’autre : aucun enregistrement, aucune transcription, aucun identifiant.',
+          ],
+        },
+        {
+          h: 'Plume Pro et paiements',
+          p: [
+            'Plume Pro est vendu sous forme d’abonnement mensuel ou annuel, ou d’achat unique à vie, via Google Play, qui gère le paiement. L’application demande à Google Play, sur votre téléphone, si vous possédez Pro ; nous n’utilisons aucun serveur pour cela. Nous ne voyons jamais vos informations de paiement.',
+            'Pour notre comptabilité, Google Play nous fournit un relevé de chaque commande (numéro de commande, produit, date, prix, pays). Il ne contient ni votre nom ni votre adresse e-mail. La politique de confidentialité de Google s’applique au paiement : policies.google.com/privacy.',
+          ],
+        },
+        {
+          h: 'Retours et assistance',
+          p: [
+            'Si vous écrivez à contact@galernestudio.com, par exemple avec le bouton « Envoyer un avis », nous recevons votre adresse e-mail et votre message. Nous les utilisons uniquement pour vous répondre.',
+          ],
+        },
+        {
+          h: 'Qui traite vos données',
+          p: ['Nous ne vendons ni ne partageons vos données. En dehors de vous, seuls ces acteurs peuvent voir quelque chose :'],
+          ul: [
+            'Google (Google Play) : installation, mises à jour et paiements, selon la politique de confidentialité de Google.',
+            'Hugging Face, Inc. et GitHub, Inc. (États-Unis) : ils voient votre adresse IP quand l’application télécharge un modèle.',
+            'Notre fournisseur d’e-mail : les messages que vous envoyez à contact@galernestudio.com.',
+          ],
+        },
+        {
+          h: 'Transferts hors de l’UE',
+          p: [
+            'Google, Hugging Face et GitHub peuvent traiter les adresses IP et les relevés de commande aux États-Unis. Ces transferts reposent sur les clauses contractuelles types de la Commission européenne et, lorsque le prestataire est certifié, sur le cadre de protection des données UE-États-Unis (Data Privacy Framework).',
+          ],
+        },
+        {
+          h: 'Pourquoi nous traitons vos données (bases légales)',
+          ul: [
+            'Téléchargement des modèles, fourniture de Pro et réponse à vos messages : exécution de notre contrat avec vous, ou mesures prises à votre demande.',
+            'Conservation des relevés de commande : obligation légale (règles comptables françaises).',
+          ],
+        },
+        {
+          h: 'Durées de conservation',
+          ul: [
+            'Enregistrements, transcriptions et réglages : uniquement sur votre téléphone, jusqu’à ce que vous les supprimiez ou désinstalliez l’application. Nous n’en avons aucune copie.',
+            'Relevés de commande : 10 ans, comme l’exige le droit comptable français.',
+            'E-mails d’assistance : jusqu’à 3 ans après notre dernier échange.',
+          ],
+        },
+        {
+          h: 'Supprimer vos données',
+          id: 'delete-data',
+          p: ['Plume n’a pas de compte, il n’y a donc rien à clôturer.'],
+          ul: [
+            'Supprimez une transcription et son audio depuis l’écran de la transcription (menu > Supprimer).',
+            'Tout supprimer : désinstallez Plume, ou allez dans Paramètres Android > Applications > Plume > Stockage > Effacer les données. Tout est supprimé immédiatement et nous n’en gardons aucune copie.',
+            'Les fichiers exportés ou sauvegardés dans Téléchargements sont hors de l’application : supprimez-les dans votre application Fichiers.',
+            'E-mails d’assistance : demandez-le-nous à contact@galernestudio.com et nous les supprimerons.',
+          ],
+        },
+        {
+          h: 'Enfants',
+          p: ['Plume ne s’adresse pas aux enfants de moins de 13 ans.'],
+        },
+        rights.fr,
+        changes.fr,
+      ],
+    },
+  },
 };

@@ -127,6 +127,20 @@ export const apps: AppEntry[] = [
     hasPage: true,
   },
   {
+    slug: 'plume',
+    name: 'Plume',
+    initial: 'P',
+    bg: '#15193B',
+    fg: '#F4EFE6',
+    kinds: ['android'],
+    platform: { en: 'Android', fr: 'Android' },
+    desc: {
+      en: 'Offline audio transcription. Lectures, meetings, interviews and voice notes turned into text on your phone, never uploaded.',
+      fr: 'Transcription audio hors ligne. Cours, réunions, interviews et vocaux transformés en texte sur votre téléphone, sans jamais être envoyés.',
+    },
+    playUrl: play('com.galernestudio.plume'),
+  },
+  {
     slug: 'kioku',
     name: 'Kioku',
     initial: 'K',
