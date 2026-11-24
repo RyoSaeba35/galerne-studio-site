@@ -139,6 +139,7 @@ export const apps: AppEntry[] = [
       fr: 'Transcription audio hors ligne. Cours, réunions, interviews et vocaux transformés en texte sur votre téléphone, sans jamais être envoyés.',
     },
     playUrl: play('com.galernestudio.plume'),
+    hasPage: true,
   },
   {
     slug: 'kioku',
@@ -259,6 +260,60 @@ export const appPages: Record<string, AppPageData> = {
         body: {
           en: 'Recordings and texts are never stored or used to train AI. 2,000 words a week free, unlimited with Pro.',
           fr: 'Enregistrements et textes ne sont jamais conservés ni utilisés pour entraîner une IA. 2 000 mots par semaine gratuits, illimité avec Pro.',
+        },
+      },
+    ],
+  },
+  plume: {
+    tagline: {
+      en: 'Turn lectures, meetings, interviews and voice notes into text, right on your phone. Plume transcribes offline: your audio is never uploaded.',
+      fr: 'Transformez cours, réunions, interviews et vocaux en texte, directement sur votre téléphone. Plume transcrit hors ligne : votre audio n’est jamais envoyé.',
+    },
+    meta: { en: 'Free · Pro from €3.99/month · Android · 14 languages', fr: 'Gratuit · Pro dès 3,99 €/mois · Android · 14 langues' },
+    iconBg: '#15193B',
+    iconFg: '#F4EFE6',
+    category: 'ProductivityApplication',
+    languages: ['en', 'fr', 'it', 'es', 'de', 'nl', 'nb', 'pl', 'sv', 'fi', 'pt', 'ja', 'ko', 'zh-Hans'],
+    screenshots: [],
+    supportHint: {
+      en: 'A word Plume keeps getting wrong, or a file that won’t import? Write to us.',
+      fr: 'Un mot que Plume transcrit toujours mal, ou un fichier qui ne s’importe pas ? Écrivez-nous.',
+    },
+    privacyBlurb: {
+      en: 'Transcription runs entirely on your phone. No account, no ads, no tracking, and your recordings and transcripts are never sent anywhere. Read exactly what Plume does with your data.',
+      fr: 'La transcription se fait entièrement sur votre téléphone. Pas de compte, pas de publicité, pas de pistage, et vos enregistrements et transcriptions ne sont jamais envoyés. Découvrez précisément ce que Plume fait de vos données.',
+    },
+    features: [
+      {
+        icon: 'mic',
+        title: { en: 'Record or import', fr: 'Enregistrez ou importez' },
+        body: {
+          en: 'Record with the screen off, import any audio or video file, or share a voice note to Plume from WhatsApp or any app.',
+          fr: 'Enregistrez écran éteint, importez n’importe quel fichier audio ou vidéo, ou partagez un vocal vers Plume depuis WhatsApp ou une autre appli.',
+        },
+      },
+      {
+        icon: 'lock',
+        title: { en: 'Offline and private', fr: 'Hors ligne et privé' },
+        body: {
+          en: 'Speech recognition runs on the device. Works on a plane, in a lecture hall without Wi-Fi, anywhere.',
+          fr: 'La reconnaissance vocale tourne sur l’appareil. Ça marche en avion, dans un amphi sans Wi-Fi, partout.',
+        },
+      },
+      {
+        icon: 'globe',
+        title: { en: 'Many languages', fr: 'De nombreuses langues' },
+        body: {
+          en: 'Fast models for English and 24 European languages, for Chinese, Japanese and Korean, and Whisper for 99 languages.',
+          fr: 'Des modèles rapides pour le français, l’anglais et 23 autres langues européennes, pour le chinois, le japonais et le coréen, et Whisper pour 99 langues.',
+        },
+      },
+      {
+        icon: 'book',
+        title: { en: 'Text you can use', fr: 'Un texte exploitable' },
+        body: {
+          en: 'Timestamps you tap to listen, quick edits, search, and export to TXT, SRT and VTT subtitles or Word.',
+          fr: 'Des horodatages à toucher pour réécouter, des corrections rapides, la recherche, et l’export en TXT, sous-titres SRT et VTT ou Word.',
         },
       },
     ],
