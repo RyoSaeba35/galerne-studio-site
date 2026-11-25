@@ -2,6 +2,7 @@ import type { Lang } from './apps';
 import type { Section } from './privacy';
 import { publisher } from './publisher';
 import { souffleTerms } from './terms-souffle';
+import { plumeTerms } from './terms-plume';
 
 /**
  * Terms of use for the apps that have a page on galernestudio.com.
@@ -27,12 +28,15 @@ export const termsApps: Record<string, AppTerms> = {
   kioku: { name: 'Kioku', updated: '2026-11-13', ads: true, tips: true, minAge: 13 },
   // Souffle has an account and a subscription: its own text, in terms-souffle.ts.
   souffle: { name: 'Souffle', updated: '2026-11-10', ads: false },
+  // Plume has a subscription and a lifetime purchase: its own text, in terms-plume.ts.
+  plume: { name: 'Plume', updated: '2026-11-25', ads: false, minAge: 13 },
 };
 
 const p = publisher;
 
 export function termsFor(slug: string, lang: Lang): Section[] {
   if (slug === 'souffle') return souffleTerms(lang);
+  if (slug === 'plume') return plumeTerms(lang);
   const app = termsApps[slug];
   const n = app.name;
 
