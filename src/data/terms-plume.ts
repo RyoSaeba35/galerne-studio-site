@@ -11,10 +11,10 @@ export const plumeLimits = {
   freeMinutes: 15,
   monthly: '€3.99',
   monthlyFr: '3,99 €',
-  yearly: '€24.99',
-  yearlyFr: '24,99 €',
-  lifetime: '€89',
-  lifetimeFr: '89 €',
+  yearly: '€19.99',
+  yearlyFr: '19,99 €',
+  lifetime: '€39',
+  lifetimeFr: '39 €',
   trialDays: 3,
 };
 
